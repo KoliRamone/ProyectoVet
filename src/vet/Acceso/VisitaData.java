@@ -7,7 +7,7 @@ package vet.Acceso;
 
 /**
  *
- * @author Lucy
+ * @author ev978
  */
 public class VisitaData {
     

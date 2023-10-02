@@ -39,55 +39,5 @@ public class VisitaMascotas {
 
     public VisitaMascotas() {
     }   
-
-    public int getIdVisita() {
-        return idVisita;
-    }
-
-    public void setIdVisita(int idVisita) {
-        this.idVisita = idVisita;
-    }
-
-    public int getIdMascota() {
-        return idMascota;
-    }
-
-    public void setIdMascota(int idMascota) {
-        this.idMascota = idMascota;
-    }
-
-    public int getIdtrat() {
-        return idtrat;
-    }
-
-    public void setIdtrat(int idtrat) {
-        this.idtrat = idtrat;
-    }
-
-    public LocalDate getFechaVisit() {
-        return fechaVisit;
-    }
-
-    public void setFechaVisit(LocalDate fechaVisit) {
-        this.fechaVisit = fechaVisit;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-    
-    
     
 }
