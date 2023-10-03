@@ -33,7 +33,7 @@ public class ClienteData {
     
     @SuppressWarnings("ConvertToTryWithResources")
     public void guardarCliente(Clientes cliente){
-        String sql="INSERT INTO cliente(dni, apellido, nombre,dire,tel,nombreAlt,telAlt, estado)"
+        String sql="INSERT INTO cliente(dni, apellido, nombre,dirección,telefono,nombreAlt,telefonoAlt, estado)"
                 + "VALUES(?,?,?,?,?)";
         
         try {
@@ -61,7 +61,7 @@ public class ClienteData {
     }
   
     public void modificarCliente(Clientes cliente){
-        String sql = "UPDATE cliente SET dni = ? , apellido = ?, nombre = ?, dire = ?, tel=?, nombreAlt=?,telAlt=?,estado=? WHERE idCliente = ?";
+        String sql = "UPDATE cliente SET dni = ? , apellido = ?, nombre = ?, dirección = ?, telefono=?, nombreAlt=?,telefonoAlt=?,estado=? WHERE idCliente = ?";
         @SuppressWarnings("UnusedAssignment")
         PreparedStatement ps = null;
         try{
@@ -109,7 +109,7 @@ public class ClienteData {
     
     public Clientes buscarCliente(int id) {
         Clientes cliente = null;
-        String sql = "SELECT dni, apellido, nombre,dire, tel, nombreAlt, telAlt FROM cliente WHERE idCliente = ?";
+        String sql = "SELECT dni, apellido, nombre,dirección, telefono, nombreAlt, telefonoAlt FROM cliente WHERE idCliente = ?";
         @SuppressWarnings("UnusedAssignment")
         PreparedStatement ps = null;
         try {
@@ -123,18 +123,21 @@ public class ClienteData {
                 cliente.setDni(rs.getInt("dni"));
                 cliente.setApellido(rs.getString("apellido"));
                 cliente.setNombre(rs.getString("nombre"));
-                cliente.setDire(rs.getString("dirección"));
+                cliente.setDire(rs.getString("direción"));
+                cliente.setTel(rs.getInt("telefono"));
+                cliente.setNombreAlt(rs.getString("nombreAlt"));
+                cliente.setTelAlt(rs.getInt("telefonoAlt"));
             
                 
                 cliente.setEstado(true);
                 
             }
             else {
-                JOptionPane.showMessageDialog(null, "No existe el Cliente");
+                JOptionPane.showMessageDialog(null, "No existe el cliente");
             }
             ps.close();
         }catch (SQLException ex){
-                    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente "+ex.getMessage());
+                    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente "+ex.getMessage());
                     }
             return cliente;
         
@@ -142,7 +145,7 @@ public class ClienteData {
      
     public Clientes buscarClientePorDni(int dni) {
         Clientes cliente = null;
-        String sql = "SELECT idAlumno, dni, apellido, nombre, fechaNac,estado FROM alumno WHERE dni=?";
+        String sql = "SELECT idCliente, dni, apellido, nombre, dirección, telefono, nombreAlt, telefonoAlt ,estado FROM alumno WHERE dni=?";
         @SuppressWarnings("UnusedAssignment")
         PreparedStatement ps = null;
         try {
@@ -152,21 +155,24 @@ public class ClienteData {
             
             if (rs.next()) {
                 cliente=new Clientes();
-                cliente.setIdCliente(rs.getInt("idAlumno"));
+                cliente.setIdCliente(rs.getInt("idCliente"));
                 cliente.setDni(rs.getInt("dni"));
                 cliente.setApellido(rs.getString("apellido"));
                 cliente.setNombre(rs.getString("nombre"));
-                //cliente.setFecha(rs.getDate("fechaNac").toLocalDate());
+                cliente.setDire(rs.getString("dirección"));
+                cliente.setTel(rs.getInt("telefono"));
+                cliente.setNombreAlt(rs.getString("nombreAlt"));
+                cliente.setTelAlt(rs.getInt("telefonoAlt"));
                   int a=rs.getInt("estado");
                     if(a==1){
                     cliente.setEstado(true);
                     }else if(a==0){cliente.setEstado(false);}
             }
             else {
-                JOptionPane.showMessageDialog(null, "No existe el alumno");
+                JOptionPane.showMessageDialog(null, "No existe el cliente");
             } ps.close();
         }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente "+ex.getMessage());
         }
         return cliente;
     }
@@ -191,7 +197,7 @@ public class ClienteData {
                 
             }            
         }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla cliente "+ex.getMessage());
         }
         return clientes;
     }
