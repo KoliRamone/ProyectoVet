@@ -34,7 +34,7 @@ public class ClienteData {
     @SuppressWarnings("ConvertToTryWithResources")
     public void guardarCliente(Clientes cliente){
         String sql="INSERT INTO cliente(dni, apellido, nombre,dirección,telefono,nombreAlt,telefonoAlt, estado)"
-                + "VALUES(?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?)";
         
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -74,8 +74,8 @@ public class ClienteData {
                 ps.setString(6, cliente.getNombreAlt());
                 ps.setInt(7,cliente.getTelAlt());
                 ps.setBoolean(8,cliente.isEstado());
-                ps.executeUpdate();
-                ResultSet rs=ps.getGeneratedKeys();
+                ps.setInt(9, cliente.getIdCliente());
+                
                int exito = ps.executeUpdate();
                if (exito == 1) {
                    JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -94,9 +94,9 @@ public class ClienteData {
             String sql = "UPDATE cliente SET estado = 0 WHERE idCliente = ? ";
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setInt(1, id);
-                int fila=ps.executeUpdate();
+                int exito=ps.executeUpdate();
                 
-                if(fila==1){
+                if(exito==1){
                     JOptionPane.showMessageDialog(null, " Se elimina el cliente.");
                 }
             ps.close();
