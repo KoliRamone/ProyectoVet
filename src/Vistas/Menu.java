@@ -142,7 +142,7 @@ public class Menu extends javax.swing.JFrame {
         cl.setVisible(true);
         escritorio.add(cl);
         escritorio.moveToFront(cl);
-        cl.move(10, 10);
+        cl.move(10, 0);
     }//GEN-LAST:event_jBclientesActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
@@ -158,7 +158,7 @@ public class Menu extends javax.swing.JFrame {
         v.setVisible(true);
         escritorio.add(v);
         escritorio.moveToFront(v);
-        v.move(10, 10);
+        v.move(10, 0);
     }//GEN-LAST:event_jBvisitasActionPerformed
 
     private void jBmascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmascotasActionPerformed
@@ -168,7 +168,7 @@ public class Menu extends javax.swing.JFrame {
         m.setVisible(true);
         escritorio.add(m);
         escritorio.moveToFront(m);
-        m.move(10, 10);
+        m.move(10, 0);
     }//GEN-LAST:event_jBmascotasActionPerformed
 
     private void jBtratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtratamientosActionPerformed
@@ -179,7 +179,7 @@ public class Menu extends javax.swing.JFrame {
         t.setVisible(true);
         escritorio.add(t);
         escritorio.moveToFront(t);
-        t.move(10, 10);
+        t.move(10, 0);
     }//GEN-LAST:event_jBtratamientosActionPerformed
 
     /**
