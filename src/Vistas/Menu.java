@@ -37,7 +37,7 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabelPrincipal.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabelPrincipal.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabelPrincipal.setText("Veterinaria");
 
         jBsalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -95,10 +95,6 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelPrincipal)
-                .addGap(316, 316, 316))
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +111,10 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(123, 123, 123)
                         .addComponent(jBsalir)))
                 .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelPrincipal)
+                .addGap(276, 276, 276))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +129,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jBtratamientos)
                     .addComponent(jBmascotas)
                     .addComponent(jBclientes))
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,6 +142,7 @@ public class Menu extends javax.swing.JFrame {
         cl.setVisible(true);
         escritorio.add(cl);
         escritorio.moveToFront(cl);
+        cl.move(10, 10);
     }//GEN-LAST:event_jBclientesActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
@@ -157,6 +158,7 @@ public class Menu extends javax.swing.JFrame {
         v.setVisible(true);
         escritorio.add(v);
         escritorio.moveToFront(v);
+        v.move(10, 10);
     }//GEN-LAST:event_jBvisitasActionPerformed
 
     private void jBmascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmascotasActionPerformed
@@ -166,6 +168,7 @@ public class Menu extends javax.swing.JFrame {
         m.setVisible(true);
         escritorio.add(m);
         escritorio.moveToFront(m);
+        m.move(10, 10);
     }//GEN-LAST:event_jBmascotasActionPerformed
 
     private void jBtratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtratamientosActionPerformed
@@ -176,6 +179,7 @@ public class Menu extends javax.swing.JFrame {
         t.setVisible(true);
         escritorio.add(t);
         escritorio.moveToFront(t);
+        t.move(10, 10);
     }//GEN-LAST:event_jBtratamientosActionPerformed
 
     /**
