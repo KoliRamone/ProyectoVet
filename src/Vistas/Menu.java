@@ -28,45 +28,68 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelPrincipal = new javax.swing.JLabel();
-        jIF = new javax.swing.JInternalFrame();
         jBsalir = new javax.swing.JButton();
         jBclientes = new javax.swing.JButton();
         jBmascotas = new javax.swing.JButton();
         jBtratamientos = new javax.swing.JButton();
         jBvisitas = new javax.swing.JButton();
+        escritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelPrincipal.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabelPrincipal.setText("Veterinaria");
 
-        jIF.setVisible(true);
-
-        javax.swing.GroupLayout jIFLayout = new javax.swing.GroupLayout(jIF.getContentPane());
-        jIF.getContentPane().setLayout(jIFLayout);
-        jIFLayout.setHorizontalGroup(
-            jIFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 731, Short.MAX_VALUE)
-        );
-        jIFLayout.setVerticalGroup(
-            jIFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
-
         jBsalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jBsalir.setText("Salir de la aplicacion");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         jBclientes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jBclientes.setText("Clientes");
+        jBclientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBclientesActionPerformed(evt);
+            }
+        });
 
         jBmascotas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jBmascotas.setText("Mascotas");
+        jBmascotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBmascotasActionPerformed(evt);
+            }
+        });
 
         jBtratamientos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jBtratamientos.setText("Tratamientos");
+        jBtratamientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtratamientosActionPerformed(evt);
+            }
+        });
 
         jBvisitas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jBvisitas.setText("Visitas");
+        jBvisitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBvisitasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 733, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 423, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,18 +101,19 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(316, 316, 316))
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(jBclientes)
                         .addGap(18, 18, 18)
                         .addComponent(jBmascotas)
                         .addGap(18, 18, 18)
                         .addComponent(jBtratamientos)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBvisitas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBsalir))
-                    .addComponent(jIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(123, 123, 123)
+                        .addComponent(jBsalir)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,19 +121,62 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelPrincipal)
                 .addGap(18, 18, 18)
-                .addComponent(jIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalir)
-                    .addComponent(jBclientes)
-                    .addComponent(jBmascotas)
+                    .addComponent(jBvisitas)
                     .addComponent(jBtratamientos)
-                    .addComponent(jBvisitas))
-                .addGap(0, 24, Short.MAX_VALUE))
+                    .addComponent(jBmascotas)
+                    .addComponent(jBclientes))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBclientesActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        Clientes cl= new Clientes();
+        cl.setVisible(true);
+        escritorio.add(cl);
+        escritorio.moveToFront(cl);
+    }//GEN-LAST:event_jBclientesActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jBsalirActionPerformed
+
+    private void jBvisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBvisitasActionPerformed
+        // TODO add your handling code here:
+         escritorio.removeAll();
+        escritorio.repaint();
+        Visitas v= new Visitas();
+        v.setVisible(true);
+        escritorio.add(v);
+        escritorio.moveToFront(v);
+    }//GEN-LAST:event_jBvisitasActionPerformed
+
+    private void jBmascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmascotasActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        Mascotas m= new Mascotas();
+        m.setVisible(true);
+        escritorio.add(m);
+        escritorio.moveToFront(m);
+    }//GEN-LAST:event_jBmascotasActionPerformed
+
+    private void jBtratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtratamientosActionPerformed
+        // TODO add your handling code here:
+         escritorio.removeAll();
+        escritorio.repaint();
+        Tratamientos t= new Tratamientos();
+        t.setVisible(true);
+        escritorio.add(t);
+        escritorio.moveToFront(t);
+    }//GEN-LAST:event_jBtratamientosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,12 +214,12 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JButton jBclientes;
     private javax.swing.JButton jBmascotas;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jBtratamientos;
     private javax.swing.JButton jBvisitas;
-    private javax.swing.JInternalFrame jIF;
     private javax.swing.JLabel jLabelPrincipal;
     // End of variables declaration//GEN-END:variables
 }
