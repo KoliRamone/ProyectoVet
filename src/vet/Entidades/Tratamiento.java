@@ -79,5 +79,10 @@ public class Tratamiento {
     public void setImporte(double importe) {
         this.importe = importe;
     }
+
+    @Override
+    public String toString() {
+        return "Tratamiento: " + idTrat + ", tipoTrat=" + tipoTrat + ", estado=" + estado + ", importe=" + importe;
+    }
     
 }
