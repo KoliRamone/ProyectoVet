@@ -24,7 +24,7 @@ public class Clientes {
     private boolean estado;
 
     // Documento, Apellido, nombre, dirección, telefono y nombre persona Alt.
-    public Clientes(int dni, String apellido, String nombre, String nombreAlt, String dire, int tel, int telAlt) {
+    public Clientes(int dni, String apellido, String nombre, String nombreAlt, String dire, int tel, int telAlt, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;

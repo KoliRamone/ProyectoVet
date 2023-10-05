@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 
 public class Conexion {
-    private static String url="jdbc:mysql://localhost/veterinaria_los_3_chiflados";
+    private static final String url="jdbc:mariadb://localhost/";
+    private static String DB="veterinaria";
     private static String usuario="root";
     private static String password="";
 
@@ -33,7 +34,7 @@ public class Conexion {
         }
         try {
             // Setup the connection with the DB
-            con = DriverManager.getConnection(url + "?useLegacyDatetimeCode=false&serverTimezone=UTC" + "&user=" + usuario + "&password=" + password);
+            con = DriverManager.getConnection(url + DB + "?useLegacyDatetimeCode=false&serverTimezone=UTC" + "&user=" + usuario + "&password=" + password);
             
         }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion ");

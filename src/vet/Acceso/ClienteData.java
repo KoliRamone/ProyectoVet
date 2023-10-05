@@ -34,7 +34,7 @@ public class ClienteData {
     @SuppressWarnings("ConvertToTryWithResources")
     public void guardarCliente(Clientes cliente){
         String sql="INSERT INTO cliente(dni, apellido, nombre,dirección,telefono,nombreAlt,telefonoAlt, estado)"
-                + "VALUES(?,?,?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?)";
         
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
