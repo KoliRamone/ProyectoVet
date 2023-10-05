@@ -200,6 +200,5 @@ public class ClienteData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla cliente "+ex.getMessage());
         }
         return clientes;
-    }
-    
+    }   
 }

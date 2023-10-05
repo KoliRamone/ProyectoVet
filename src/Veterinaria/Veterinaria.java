@@ -21,18 +21,17 @@ public class Veterinaria {
      */
     public static void main(String[] args) {
         
-        //Clientes juan= new Clientes(3,55664454,"Rodriguez","Maria","Av.Cabildo 1800","Maria Juluia",1155443322,1155667788,true);
+        //Clientes juan= new Clientes(5,786345724,"Perez","juancito","Av.Cabildo 1800","Mrwhth",1155443322,1155667788,true);
         //ClienteData cd = new ClienteData();
         //cd.guardarCliente(juan);
         //cd.modificarCliente(juan);
-        //Clientes Marta = cd.buscarClientePorDni(55664454);
-        //Clientes Marta = cd.buscarCliente(3);
-        //cd.eliminarCliente(4);
+        //Clientes Marta = cd.buscarClientePorDni(786345724);
+        //Clientes Marta = cd.buscarCliente(2);
+        //cd.eliminarCliente(5);
         //System.out.println(Marta);
         
         //for (Clientes cliente:cd.listarClientes()){
         //System.out.println(cliente);
-        //}
-        
+        //}     
     }   
 }
