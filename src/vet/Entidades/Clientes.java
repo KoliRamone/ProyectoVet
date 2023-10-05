@@ -35,7 +35,7 @@ public class Clientes {
         this.estado = estado;
     }
 
-    public Clientes(int idCliente, int dni, String apellido, String nombre, String nombreAlt, String dire, int tel, int telAlt) {
+    public Clientes(int idCliente, int dni, String apellido, String nombre, String nombreAlt, String dire, int tel, int telAlt,boolean estado) {
         this.idCliente = idCliente;
         this.dni = dni;
         this.apellido = apellido;
