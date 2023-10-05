@@ -29,7 +29,7 @@ public class ClienteData {
         
         con=Conexion.getConexion();
     }
-    
+    //comentar
     
     @SuppressWarnings("ConvertToTryWithResources")
     public void guardarCliente(Clientes cliente){

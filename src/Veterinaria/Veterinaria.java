@@ -21,9 +21,9 @@ public class Veterinaria {
      */
     public static void main(String[] args) {
         
-        Clientes juan= new Clientes(55664454,"Rodriguez","Maria","Maria Paz","Av.Cabildo 1800",1155443322,1155667788,true);
+     //   Clientes juan= new Clientes(55664454,"Rodriguez","Maria","Maria Paz","Av.Cabildo 1800",1155443322,1155667788,true);
         ClienteData cd = new ClienteData();
-        cd.guardarCliente(juan);
+     //   cd.guardarCliente(juan);
          
         
     }
