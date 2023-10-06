@@ -138,7 +138,7 @@ public class Menu extends javax.swing.JFrame {
     private void jBclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBclientesActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        Clientes cl= new Clientes();
+        VClientes cl= new VClientes();
         cl.setVisible(true);
         escritorio.add(cl);
         escritorio.moveToFront(cl);

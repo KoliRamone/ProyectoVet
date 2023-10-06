@@ -11,4 +11,13 @@ package vet.Acceso;
  */
 public class VisitaData {
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
