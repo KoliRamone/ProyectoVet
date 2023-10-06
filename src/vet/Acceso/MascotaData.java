@@ -19,10 +19,7 @@ import javax.swing.JOptionPane;
 import vet.Entidades.Clientes;
 import vet.Entidades.Mascotas;
 
-/**
- *
- * @author ev978
- */
+
 public class MascotaData {
      private Connection con=null;
             
@@ -31,7 +28,7 @@ public class MascotaData {
         con=Conexion.getConexion();
     }
     
-    @SuppressWarnings("ConvertToTryWithResources")
+    
     public void guardarMascota(Mascotas Mascota){
         String sql="INSERT INTO Mascota(Alias, Raza, Sexo, Pelaje, fechaNac, estado)"
                 + "VALUES(?,?,?,?,?,?)";

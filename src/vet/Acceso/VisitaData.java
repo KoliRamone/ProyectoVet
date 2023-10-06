@@ -5,14 +5,18 @@
  */
 package vet.Acceso;
 
-/**
- *
- * @author ev978
- */
+import java.sql.Connection;
+
+
+
 public class VisitaData {
+    private Connection con=null;
     
-    
-    
+    public VisitaData(){
+        con=Conexion.getConexion();
+        
+    }
+
     
     
     

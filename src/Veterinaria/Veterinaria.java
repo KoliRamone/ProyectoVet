@@ -9,11 +9,7 @@ package Veterinaria;
 import vet.Acceso.*;
 import vet.Entidades.*;
 
-/**
- *
- * @author ev978
- */
- 
+
 public class Veterinaria {
 
     /**
