@@ -10,14 +10,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import vet.Entidades.Mascotas;
 import vet.Entidades.Tratamiento;
 
 
 public class TratamientoData {
     private Connection con=null;
+    private MascotaData md= new MascotaData();
     
     public TratamientoData() {
         
@@ -116,10 +120,41 @@ public class TratamientoData {
         return tratamiento;
     }
     
-    
-    
-    
-    
-    
-    
+    public List<Tratamiento>obtenerTratamientos(){
+        ArrayList<Tratamiento> ok= new ArrayList<>();
+        String sql= "SELECT * FROM tratamiento";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+             Tratamiento trat=new Tratamiento();
+             trat.setIdTrat(rs.getInt("idTratamiento"));
+             trat.setTipoTrat(rs.getString("tipoTrat"));
+             trat.setDescripcion(rs.getString("descripcion"));
+             trat.setImporte(rs.getDouble("importe"));
+             ok.add(trat);
+             }
+        } catch (SQLException ex) {
+             JOptionPane.showConfirmDialog(null, "Error al acceder a la tabla de tratamiento");
+        }
+        return ok;
+    }
+    public List<Tratamiento> obtenerTratamientosPorMascota(int idMascota){
+        ArrayList<Tratamiento> ok=new ArrayList<>();
+        String sql="SELECT * FROM tratamiento WHERE idMascota = ?";
+        try{ 
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, idMascota);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+              Tratamiento trat=new Tratamiento();
+              trat.setIdTrat(rs.getInt("idTratamiento"));
+              Mascotas ms=md.buscarMascota(rs.getInt("idMascota"));
+              ok.add(trat);
+             }
+        } catch (SQLException ex){
+             JOptionPane.showConfirmDialog(null, "Error al acceder a la tabla de Tratamientos");
+        }
+        return ok;
+    }   
 }
