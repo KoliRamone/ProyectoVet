@@ -32,6 +32,7 @@ public class ClienteData {
     //comentar
     
     @SuppressWarnings("ConvertToTryWithResources")
+    
     public void guardarCliente(Clientes cliente){
         String sql="INSERT INTO cliente(dni, apellido, nombre,dirección,telefono,nombreAlt,telefonoAlt, estado)"
                 + "VALUES(?,?,?,?,?,?,?,?)";
@@ -61,7 +62,7 @@ public class ClienteData {
     }
   
     public void modificarCliente(Clientes cliente){
-        String sql = "UPDATE cliente SET dni = ? , apellido = ?, nombre = ?, dirección = ?, telefono=?, nombreAlt=?,telefonoAlt=?,estado=? ";
+        String sql = "UPDATE cliente SET dni = ? , apellido = ?, nombre = ?, dirección = ?, telefono=?, nombreAlt=?,telefonoAlt=?,estado=? WHERE idCliente = ? ";
         @SuppressWarnings("UnusedAssignment")
         PreparedStatement ps = null;
         try{
@@ -74,7 +75,7 @@ public class ClienteData {
                 ps.setString(6, cliente.getNombreAlt());
                 ps.setInt(7,cliente.getTelAlt());
                 ps.setBoolean(8,cliente.isEstado());
-                
+                ps.setInt(9, cliente.getIdCliente());
                 
                int exito = ps.executeUpdate();
                if (exito == 1) {
