@@ -15,13 +15,14 @@ public class Mascotas {
     private int idMascota;
     private String alias;
     private String sexo;
+    private String especie;
     private String raza;
     private LocalDate fechaNac;
     private String pelaje;
     private int idCliente;
     private boolean estado;
 
-    public Mascotas(int idMascota, String alias, String sexo, String raza, LocalDate fechaNac, String pelaje, int idCliente, boolean estado) {
+    public Mascotas(int idMascota, String alias, String sexo,String especie, String raza, LocalDate fechaNac, String pelaje, int idCliente, boolean estado) {
         this.idMascota = idMascota;
         this.alias = alias;
         this.sexo = sexo;
@@ -30,9 +31,18 @@ public class Mascotas {
         this.pelaje = pelaje;
         this.idCliente = idCliente;
         this.estado = estado;
+        this.especie=especie;
     }
 
-    public Mascotas(String alias, String sexo, String raza, LocalDate fechaNac, String pelaje, int idCliente, boolean estado) {
+    public String getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+
+    public Mascotas(String alias, String sexo,String especie, String raza, LocalDate fechaNac, String pelaje, int idCliente, boolean estado) {
         this.alias = alias;
         this.sexo = sexo;
         this.raza = raza;
@@ -40,6 +50,7 @@ public class Mascotas {
         this.pelaje = pelaje;
         this.idCliente = idCliente;
         this.estado = estado;
+        this.especie=especie;
     }
 
     public Mascotas() {

@@ -164,7 +164,7 @@ public class Menu extends javax.swing.JFrame {
     private void jBmascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmascotasActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        Mascotas m= new Mascotas();
+        VMascotas m= new VMascotas();
         m.setVisible(true);
         escritorio.add(m);
         escritorio.moveToFront(m);

@@ -243,6 +243,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTdni">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTdniKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -250,6 +253,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTnombre">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTnombreKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -257,6 +263,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTapellido">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTapellidoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -271,6 +280,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTtelefono">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTtelefonoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -278,6 +290,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTnombrealt">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTnombrealtKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -285,6 +300,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTtelalt">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTtelaltKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonBuscar">
       <Properties>
@@ -300,6 +318,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTbusqueda">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTbusquedaKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jIDnum">
     </Component>

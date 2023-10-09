@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import vet.Acceso.*;
 import vet.Entidades.*;
@@ -96,17 +97,53 @@ public class VClientes extends javax.swing.JInternalFrame {
 
         jLabel2.setText("DNI");
 
+        jTdni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTdniKeyTyped(evt);
+            }
+        });
+
         jLabel3.setText("Nombre");
 
+        jTnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTnombreKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Apellido");
+
+        jTapellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTapellidoKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Dirección");
 
         jLabel6.setText("Telefono");
 
+        jTtelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTtelefonoKeyTyped(evt);
+            }
+        });
+
         jLabel7.setText("Contacto Alternativo");
 
+        jTnombrealt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTnombrealtKeyTyped(evt);
+            }
+        });
+
         jLabel8.setText("Telefono Alt.");
+
+        jTtelalt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTtelaltKeyTyped(evt);
+            }
+        });
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +153,12 @@ public class VClientes extends javax.swing.JInternalFrame {
         });
 
         jLabelID.setText("ID:");
+
+        jTbusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTbusquedaKeyTyped(evt);
+            }
+        });
 
         jLabel9.setText("Busqueda por DNI:");
 
@@ -305,7 +348,7 @@ public class VClientes extends javax.swing.JInternalFrame {
        String dire=jTdireccion.getText();
        int tel=Integer.parseInt(jTtelefono.getText());
        int telAlt=Integer.parseInt(jTtelalt.getText());
-       boolean estado=jestado.isSelected();
+       boolean estado=true;
        
        Clientes cl= new Clientes(dni,apellido,nombre,nombreAlt,dire,tel,telAlt,estado);
        ClienteData cd= new ClienteData();
@@ -340,6 +383,61 @@ public class VClientes extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jestadoActionPerformed
 
+    private void jTdniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdniKeyTyped
+       if(Character.isLetter(evt.getKeyChar())){
+        evt.consume();
+        }
+        if(evt.getKeyChar()==KeyEvent.VK_SPACE){
+        evt.consume();
+        
+    }//GEN-LAST:event_jTdniKeyTyped
+    }
+    private void jTbusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTbusquedaKeyTyped
+        // TODO add your handling code here:
+        if(Character.isLetter(evt.getKeyChar())){
+        evt.consume();
+        }
+        if(evt.getKeyChar()==KeyEvent.VK_SPACE){
+        evt.consume();
+    }//GEN-LAST:event_jTbusquedaKeyTyped
+    }
+    private void jTtelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelefonoKeyTyped
+        // TODO add your handling code here:
+        if(Character.isLetter(evt.getKeyChar())){
+        evt.consume();
+        }
+        if(evt.getKeyChar()==KeyEvent.VK_SPACE){
+        evt.consume();
+    }//GEN-LAST:event_jTtelefonoKeyTyped
+    }
+    private void jTtelaltKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelaltKeyTyped
+        // TODO add your handling code here:
+        if(Character.isLetter(evt.getKeyChar())){
+        evt.consume();
+        }
+        if(evt.getKeyChar()==KeyEvent.VK_SPACE){
+        evt.consume();
+    }//GEN-LAST:event_jTtelaltKeyTyped
+    }
+    private void jTnombrealtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombrealtKeyTyped
+        // TODO add your handling code here:
+        if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
+        evt.consume();
+    }//GEN-LAST:event_jTnombrealtKeyTyped
+    }
+    private void jTapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTapellidoKeyTyped
+        // TODO add your handling code here:
+        if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
+        evt.consume();
+    }//GEN-LAST:event_jTapellidoKeyTyped
+    }
+    
+    private void jTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyTyped
+        // TODO add your handling code here:
+        if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
+        evt.consume();
+    }//GEN-LAST:event_jTnombreKeyTyped
+    }
    
     
 
