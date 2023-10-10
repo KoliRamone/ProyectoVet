@@ -87,7 +87,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
         jTextRaza = new javax.swing.JTextField();
         jBguardar = new javax.swing.JButton();
         jBmod = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBeliminar = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jComboCliente = new javax.swing.JComboBox<>();
@@ -154,7 +154,12 @@ public class VMascotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setText("Eliminar");
+        jBeliminar.setText("Eliminar");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
 
         jBBuscar.setText("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +238,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jBmod)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton3))
+                                        .addComponent(jBeliminar))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(138, 138, 138)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -250,16 +255,12 @@ public class VMascotas extends javax.swing.JInternalFrame {
                                 .addGap(257, 257, 257)
                                 .addComponent(jLabel1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextPelo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBsalir))))
+                    .addComponent(jComboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextPelo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBsalir))
                 .addGap(47, 47, 47))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -306,7 +307,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
                             .addComponent(jBsalir)
                             .addComponent(jBguardar)
                             .addComponent(jBmod)
-                            .addComponent(jButton3)
+                            .addComponent(jBeliminar)
                             .addComponent(jBnewMascota)))
                     .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
@@ -345,6 +346,10 @@ public class VMascotas extends javax.swing.JInternalFrame {
        Mascotas m=new Mascotas(alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
        md.guardarMascota(m);
        
+       
+       m=md.buscarMascota(cl.getIdCliente(), alias);
+       
+       jLabelNumero.setText(String.valueOf(m.getIdMascota()));
        
        
        
@@ -409,12 +414,12 @@ public class VMascotas extends javax.swing.JInternalFrame {
        String sexo=String.valueOf(jComboSexo.getSelectedItem());
        String pelo=jTextPelo.getText();
        LocalDate fecha=jDate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-   
+       int id=Integer.parseInt(jLabelNumero.getText());
               
        Clientes cl= new Clientes();
        MascotaData md=new MascotaData();
        cl=(Clientes)jComboCliente.getSelectedItem();
-       Mascotas m=new Mascotas(alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
+       Mascotas m=new Mascotas(id,alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
        md.modificarMascota(m);
        
        
@@ -471,7 +476,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
            break;
            case "Loro": jComboTipo.setSelectedIndex(2);
            break;
-           case "Hamster": jComboTipo.setSelectedIndex(3);
+           case "Hamster": jComboTipo.setSelectedIndex(3);break;
            default:jComboTipo.setSelectedIndex(-1);
            break;
        }
@@ -483,10 +488,43 @@ public class VMascotas extends javax.swing.JInternalFrame {
         jLabelNumero.setText(String.valueOf(m.getIdMascota()));
      
        }catch(NullPointerException a){
-       JOptionPane.showMessageDialog(this, "faltan completar los campos");
+           if(jTextAlias.getText().equalsIgnoreCase("") || jComboCliente.getSelectedIndex()==-1){
+       JOptionPane.showMessageDialog(this, "faltan completar los campos");}
        }
         
     }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        // TODO add your handling code here:
+        
+            int respuesta = JOptionPane.showOptionDialog(null, "¿Quieres eliminar a la mascota y todos sus tratamientos?", "ADVERTENCIA", 
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Sí", "No"}, "No");
+        
+        if (respuesta == JOptionPane.YES_OPTION) {
+            
+             int id=Integer.parseInt(jLabelNumero.getText());
+              
+      
+       MascotaData md=new MascotaData();
+             
+       md.eliminarMascota(id);
+            
+        } else if (respuesta == JOptionPane.NO_OPTION) {
+            
+        }
+    
+
+       
+      
+       
+       
+       
+       
+               
+        
+        
+        
+    }//GEN-LAST:event_jBeliminarActionPerformed
 
     
     
@@ -496,11 +534,11 @@ public class VMascotas extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBmod;
     private javax.swing.JButton jBnewMascota;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<Clientes> jComboCliente;
     private javax.swing.JComboBox<String> jComboSexo;
     private javax.swing.JComboBox<String> jComboTipo;

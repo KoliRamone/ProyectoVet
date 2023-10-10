@@ -59,7 +59,7 @@ public class MascotaData {
     }
   
     public void modificarMascota(Mascotas Mascota){
-        String sql = "UPDATE mascota SET Alias = ? , Raza = ?, Sexo = ?, Pelaje = ?,estado=?,fechaNac=? WHERE idMascota = ?";
+        String sql = "UPDATE mascota SET Alias = ? , Raza = ?, Sexo = ?, Pelaje = ?,estado=?,fechaNac=?,Especie=? WHERE idMascota = ?";
         @SuppressWarnings("UnusedAssignment")
        PreparedStatement ps = null;
           try{
@@ -68,10 +68,15 @@ public class MascotaData {
                ps.setString(1, Mascota.getAlias());
                ps.setString(2, Mascota.getRaza());
                ps.setString(3, Mascota.getSexo());
+               
                ps.setString(4, Mascota.getPelaje());
-               ps.setDate(5, Date.valueOf(Mascota.getFechaNac()));
-               ps.setBoolean(6, Mascota.isEstado());               
-               ps.setInt(7, Mascota.getIdMascota());
+               ps.setBoolean(5, Mascota.isEstado());   
+               ps.setDate(6, Date.valueOf(Mascota.getFechaNac()));
+                  ps.setString(7,Mascota.getEspecie());
+                 ps.setInt(8, Mascota.getIdMascota());
+          
+                          
+             
                
                int exito = ps.executeUpdate();
                if (exito == 1) {
@@ -94,7 +99,7 @@ public class MascotaData {
                 int fila=ps.executeUpdate();
                 
                 if(fila==1){
-                    JOptionPane.showMessageDialog(null, " Mascota eliminada de la base de datos.");
+                    JOptionPane.showMessageDialog(null, " Mascota eliminada del programa.");
                 }
             ps.close();
             }
@@ -106,7 +111,7 @@ public class MascotaData {
     
     public Mascotas buscarMascota(int id) {
         Mascotas mascota = null;
-        String sql = "SELECT Alias, Raza, Sexo,Pelaje,fechaNac FROM mascota WHERE idMascota = ?";
+        String sql = "SELECT Alias, Raza, Sexo,Pelaje,fechaNac FROM mascota WHERE idMascota = ? AND estado=1";
         @SuppressWarnings("UnusedAssignment")
         PreparedStatement ps = null;
         try {
@@ -122,7 +127,9 @@ public class MascotaData {
                 mascota.setSexo(rs.getString("sexo"));
                 mascota.setPelaje(rs.getString("pelaje"));                
                 mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                
                 mascota.setEstado(true);
+                
                 
             }
             else {
@@ -136,11 +143,14 @@ public class MascotaData {
         
     }
     
+   
     
+    
+
     
      public Mascotas buscarMascota(int idCliente,String alias) {
         Mascotas mascota = null;
-        String sql = "SELECT idMascota,Raza,Especie, Sexo,Pelaje,fechaNac,estado FROM mascota WHERE idCliente = ? AND Alias = ?";
+        String sql = "SELECT idMascota,Raza,Especie, Sexo,Pelaje,fechaNac,estado FROM mascota WHERE idCliente = ? AND Alias = ? AND estado=1";
         @SuppressWarnings("UnusedAssignment")
         PreparedStatement ps = null;
         try {

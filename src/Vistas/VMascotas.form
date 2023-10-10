@@ -63,7 +63,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jBmod" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jBeliminar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
@@ -92,19 +92,12 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboCliente" min="-2" pref="179" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jDate" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextPelo" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="jBsalir" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jComboCliente" min="-2" pref="179" max="-2" attributes="0"/>
+                  <Component id="jDate" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextPelo" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="jBsalir" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
           </Group>
@@ -160,7 +153,7 @@
                           <Component id="jBsalir" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBguardar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBmod" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBeliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBnewMascota" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -269,10 +262,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBmodActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jBeliminar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBeliminarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBBuscar">
       <Properties>

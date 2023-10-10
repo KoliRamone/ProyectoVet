@@ -175,7 +175,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
          escritorio.removeAll();
         escritorio.repaint();
-        Tratamientos t= new Tratamientos();
+        VTratamientos t= new VTratamientos();
         t.setVisible(true);
         escritorio.add(t);
         escritorio.moveToFront(t);
