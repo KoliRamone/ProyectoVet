@@ -29,8 +29,7 @@ public class TratamientoData {
     }        
  
     public void guardarTratamiento(Tratamiento tratamiento) {
-        String sql = "INSERT INTO tratamiento(tipoTrat, descripcion, importe, estado"
-                + "VALUES (?,?,?,?))";
+        String sql = "INSERT INTO tratamiento(tipoTrat, descripcion, importe, estado) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, tratamiento.getTipoTrat());
@@ -53,7 +52,7 @@ public class TratamientoData {
     }
     
     public void modificarTratamiento(Tratamiento tratamiento){
-        String sql= "UPDATE tratamiento SET tipoTrat=?, descripcion=?, importe=?, estado=? WHERE idTratamiento";
+        String sql= "UPDATE tratamiento SET tipoTrat=?, descripcion=?, importe=?, estado=? WHERE idTrat=?";
         try {
             PreparedStatement ps= con.prepareStatement(sql);
             ps.setString(1, tratamiento.getTipoTrat());
@@ -95,7 +94,7 @@ public class TratamientoData {
     }
     
     public Tratamiento buscarTratamiento(int id){
-        String sql= "SELECT tipoTrat, descripcion, importe, estado FROM tratamiento WHERE idTratamiento=?";
+        String sql= "SELECT tipoTrat, descripcion, importe, estado FROM tratamiento WHERE idTrat=?";
         Tratamiento tratamiento=null;
         try {
             PreparedStatement ps= con.prepareStatement(sql);
@@ -128,7 +127,7 @@ public class TratamientoData {
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
              Tratamiento trat=new Tratamiento();
-             trat.setIdTrat(rs.getInt("idTratamiento"));
+             trat.setIdTrat(rs.getInt("idTrat"));
              trat.setTipoTrat(rs.getString("tipoTrat"));
              trat.setDescripcion(rs.getString("descripcion"));
              trat.setImporte(rs.getDouble("importe"));

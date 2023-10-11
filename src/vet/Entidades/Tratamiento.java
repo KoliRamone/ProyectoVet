@@ -82,7 +82,11 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamiento: " + idTrat + ", tipoTrat=" + tipoTrat + ", estado=" + estado + ", importe=" + importe;
+        return tipoTrat ;
+    }
+    
+    public String toString2(){
+       return tipoTrat + " "+importe+" "+estado+" "+idTrat;
     }
     
 }

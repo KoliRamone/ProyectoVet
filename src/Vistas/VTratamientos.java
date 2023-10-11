@@ -5,6 +5,10 @@
  */
 package Vistas;
 
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import vet.Acceso.TratamientoData;
+import vet.Entidades.Clientes;
 import vet.Entidades.Mascotas;
 import vet.Entidades.Tratamiento;
 
@@ -14,11 +18,19 @@ import vet.Entidades.Tratamiento;
  */
 public class VTratamientos extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Tratamientos
-     */
+    Tratamiento trat;
+    TratamientoData tratdat;
+    ArrayList<Tratamiento> listtrata=new ArrayList<>();
+    
     public VTratamientos() {
         initComponents();
+        trat=new Tratamiento();
+        tratdat=new TratamientoData();
+        
+        
+        
+        cargarCombo();
+        
     }
 
     /**
@@ -36,16 +48,18 @@ public class VTratamientos extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextImporte = new javax.swing.JTextField();
-        jRadioActivo = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jRadio = new javax.swing.JRadioButton();
+        jBguardar = new javax.swing.JButton();
+        jBmod = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextDescripcion = new javax.swing.JTextArea();
+        jTextDes = new javax.swing.JTextArea();
         label1 = new java.awt.Label();
-        idTrat = new java.awt.Label();
-        textField1 = new java.awt.TextField();
+        jLabelID = new java.awt.Label();
+        jTextTipo = new java.awt.TextField();
+        jCombo = new javax.swing.JComboBox<>();
+        jBuscar = new javax.swing.JButton();
+        jBnuevo = new javax.swing.JButton();
 
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -63,36 +77,65 @@ public class VTratamientos extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Importe:  $");
 
-        jRadioActivo.setText("  : Activo");
-        jRadioActivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioActivoActionPerformed(evt);
+        jTextImporte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextImporteKeyTyped(evt);
             }
         });
 
-        jButton1.setText("Guardar");
-
-        jButton2.setText("Modificar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jRadio.setText("  : Activo");
+        jRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jRadioActionPerformed(evt);
+            }
+        });
+
+        jBguardar.setText("Guardar");
+        jBguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBguardarActionPerformed(evt);
+            }
+        });
+
+        jBmod.setText("Modificar");
+        jBmod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBmodActionPerformed(evt);
             }
         });
 
         jButton3.setText("Eliminar");
 
-        jButton4.setText("Buscar");
-
-        jTextDescripcion.setColumns(20);
-        jTextDescripcion.setRows(5);
-        jScrollPane1.setViewportView(jTextDescripcion);
+        jTextDes.setColumns(20);
+        jTextDes.setRows(5);
+        jScrollPane1.setViewportView(jTextDes);
 
         label1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         label1.setText("ID Tratamiento:");
 
-        textField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
+                jTextTipoActionPerformed(evt);
+            }
+        });
+
+        jCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboActionPerformed(evt);
+            }
+        });
+
+        jBuscar.setText("Buscar");
+        jBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBuscarActionPerformed(evt);
+            }
+        });
+
+        jBnuevo.setText("Nuevo");
+        jBnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBnuevoActionPerformed(evt);
             }
         });
 
@@ -102,76 +145,92 @@ public class VTratamientos extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioActivo))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80))
+                                .addGap(80, 480, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(124, 124, 124)
-                                        .addComponent(idTrat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jBuscar))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                        .addComponent(jBsalir)))
-                .addGap(54, 54, 54))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBnuevo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBguardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBmod)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jLabelID, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                .addGap(94, 94, 94)
+                                .addComponent(jRadio))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBsalir)))
+                        .addGap(18, 18, 18)))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(idTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                        .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addComponent(jLabelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioActivo))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBsalir)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4))
-                        .addGap(50, 50, 50))
+                            .addComponent(jRadio)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(7, 7, 7)
+                        .addComponent(jBuscar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBsalir)
+                    .addComponent(jBguardar)
+                    .addComponent(jBmod)
+                    .addComponent(jButton3)
+                    .addComponent(jBnuevo))
+                .addGap(50, 50, 50))
         );
 
         pack();
@@ -182,35 +241,161 @@ public class VTratamientos extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
-    private void jRadioActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioActivoActionPerformed
+    private void jRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioActivoActionPerformed
+    }//GEN-LAST:event_jRadioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        
+        int id=Integer.parseInt(jLabelID.getText());
+        boolean est=jRadio.isSelected();
+        String des=jTextDes.getText();
+        String tipo=jTextTipo.getText();
+        double imp=Double.parseDouble(jTextImporte.getText());
+        
+        Tratamiento trat1=new Tratamiento(id,des,tipo,est, imp);
+        
+      
+        
+        tratdat.modificarTratamiento(trat1);
+        
+         cargarCombo();
+        
+        
+        
+        
+    }//GEN-LAST:event_jBmodActionPerformed
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+    private void jTextTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTipoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+    }//GEN-LAST:event_jTextTipoActionPerformed
 
+    private void jTextImporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextImporteKeyTyped
+        // TODO add your handling code here:
+          if(Character.isLetter(evt.getKeyChar())){
+        evt.consume();
+        }
+        if(evt.getKeyChar()==KeyEvent.VK_SPACE){
+        evt.consume();
+        
+        
+    }//GEN-LAST:event_jTextImporteKeyTyped
+    }
+    
+    
+    
+    
+    
+    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+        // TODO add your handling code here:
+        String tipo=jTextTipo.getText();
+        String descripcion=jTextDes.getText();
+        double importe=Double.parseDouble(jTextImporte.getText());
+        trat=new Tratamiento(descripcion,tipo, true,importe);
+        tratdat.guardarTratamiento(trat);
+        
+        listtrata=(ArrayList) tratdat.obtenerTratamientos();
+        
+        cargarCombo();
+        
+        
+        
+        
+    }//GEN-LAST:event_jBguardarActionPerformed
 
+    private void jComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboActionPerformed
+        // TODO add your handling code here:
+        
+      
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jComboActionPerformed
+
+    private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+        // TODO add your handling code here:
+        
+          trat=(Tratamiento)jCombo.getSelectedItem();
+        System.out.println(trat.getIdTrat());
+       Tratamiento tra= tratdat.buscarTratamiento(trat.getIdTrat());
+        
+        jTextTipo.setText(tra.getTipoTrat());
+        jTextDes.setText(tra.getDescripcion());
+        jTextImporte.setText(String.valueOf(tra.getImporte()));
+        jLabelID.setText(String.valueOf(tra.getIdTrat()));
+        System.out.println(tra.isEstado());
+        if(tra.isEstado()==true){
+        jRadio.setSelected(true);
+        
+        }else{jRadio.setSelected(false);}
+        
+        
+    }//GEN-LAST:event_jBuscarActionPerformed
+
+    private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
+        // TODO add your handling code here:
+        jCombo.setSelectedIndex(-1);
+        jTextTipo.setText("");
+        jTextDes.setText("");
+        jTextImporte.setText("");
+        jRadio.setSelected(false);
+        jLabelID.setText("");
+        
+        
+        
+    }//GEN-LAST:event_jBnuevoActionPerformed
+
+     private void cargarCombo(){
+   
+         jCombo.removeAllItems();
+    listtrata=(ArrayList) tratdat.obtenerTratamientos();
+    for(Tratamiento t:listtrata){
+    jCombo.addItem(t);
+    
+    }
+        jCombo.setSelectedIndex(-1);
+       
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Label idTrat;
+    private javax.swing.JButton jBguardar;
+    private javax.swing.JButton jBmod;
+    private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBuscar;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<Tratamiento> jCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioActivo;
+    private java.awt.Label jLabelID;
+    private javax.swing.JRadioButton jRadio;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextDescripcion;
+    private javax.swing.JTextArea jTextDes;
     private javax.swing.JTextField jTextImporte;
+    private java.awt.TextField jTextTipo;
     private java.awt.Label label1;
-    private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }
