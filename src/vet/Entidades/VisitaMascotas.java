@@ -19,26 +19,48 @@ public class VisitaMascotas {
     private LocalDate fechaVisit;
     private double peso;
     private boolean estado;
+    private boolean enfermedad;
+    private String descripcion;
 
-    public VisitaMascotas(int idVisita, int idMascota, int idtrat, LocalDate fechaVisit, double peso, boolean estado) {
+    public VisitaMascotas(int idVisita, int idMascota, int idtrat, LocalDate fechaVisit, double peso, boolean estado,boolean enfermedad,String descripcion) {
         this.idVisita = idVisita;
         this.idMascota = idMascota;
         this.idtrat = idtrat;
         this.fechaVisit = fechaVisit;
         this.peso = peso;
         this.estado = estado;
+        this.enfermedad=enfermedad;
+        this.descripcion=descripcion;
     }
 
-    public VisitaMascotas(int idMascota, int idtrat, LocalDate fechaVisit, double peso, boolean estado) {
+    public VisitaMascotas(int idMascota, int idtrat, LocalDate fechaVisit, double peso, boolean estado,boolean enfermedad,String descripcion) {
         this.idMascota = idMascota;
         this.idtrat = idtrat;
         this.fechaVisit = fechaVisit;
         this.peso = peso;
         this.estado = estado;
+        this.enfermedad=enfermedad;
+        this.descripcion=descripcion;
+    }
+
+    public boolean isEnfermedad() {
+        return enfermedad;
+    }
+
+    public void setEnfermedad(boolean enfermedad) {
+        this.enfermedad = enfermedad;
     }
 
     public VisitaMascotas() {
     }   
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public int getIdVisita() {
         return idVisita;

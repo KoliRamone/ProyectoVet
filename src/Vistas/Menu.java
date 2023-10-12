@@ -179,7 +179,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
          escritorio.removeAll();
         escritorio.repaint();
-        Visitas v= new Visitas();
+        VVisitas v= new VVisitas();
         v.setVisible(true);
         escritorio.add(v);
         escritorio.moveToFront(v);

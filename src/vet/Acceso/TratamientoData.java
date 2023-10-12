@@ -76,7 +76,7 @@ public class TratamientoData {
     }
     
     public void eliminarTratamiento(int id){
-        String sql= "UPDATE tratamiento SET estado=0 WHERE idTratamiento=? ";
+        String sql= "UPDATE tratamiento SET estado=0 WHERE idTrat=? ";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -121,7 +121,7 @@ public class TratamientoData {
     
     public List<Tratamiento>obtenerTratamientos(){
         ArrayList<Tratamiento> ok= new ArrayList<>();
-        String sql= "SELECT * FROM tratamiento";
+        String sql= "SELECT * FROM tratamiento WHERE estado=1";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();

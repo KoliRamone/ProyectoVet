@@ -7,6 +7,8 @@ package Vistas;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import vet.Acceso.MascotaData;
 import vet.Acceso.TratamientoData;
 import vet.Entidades.Clientes;
 import vet.Entidades.Mascotas;
@@ -51,7 +53,7 @@ public class VTratamientos extends javax.swing.JInternalFrame {
         jRadio = new javax.swing.JRadioButton();
         jBguardar = new javax.swing.JButton();
         jBmod = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBeliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextDes = new javax.swing.JTextArea();
         label1 = new java.awt.Label();
@@ -104,7 +106,12 @@ public class VTratamientos extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setText("Eliminar");
+        jBeliminar.setText("Eliminar");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
 
         jTextDes.setColumns(20);
         jTextDes.setRows(5);
@@ -181,7 +188,7 @@ public class VTratamientos extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBmod)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)))
+                                .addComponent(jBeliminar)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -228,7 +235,7 @@ public class VTratamientos extends javax.swing.JInternalFrame {
                     .addComponent(jBsalir)
                     .addComponent(jBguardar)
                     .addComponent(jBmod)
-                    .addComponent(jButton3)
+                    .addComponent(jBeliminar)
                     .addComponent(jBnuevo))
                 .addGap(50, 50, 50))
         );
@@ -349,6 +356,34 @@ public class VTratamientos extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jBnuevoActionPerformed
 
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+           int respuesta = JOptionPane.showOptionDialog(null, "¿Quieres eliminar el tratamiento?"+"\n"+" el tratamiento quedara almacenado en la base de datos "+"\n"+" no podra cargarse en la aplicacion", "ADVERTENCIA", 
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Sí", "No"}, "No");
+        
+        if (respuesta == JOptionPane.YES_OPTION) {
+            
+            int id=Integer.parseInt(jLabelID.getText());
+                       
+             tratdat.eliminarTratamiento(id);
+             cargarCombo();
+            
+        } else if (respuesta == JOptionPane.NO_OPTION) {
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jBeliminarActionPerformed
+
      private void cargarCombo(){
    
          jCombo.removeAllItems();
@@ -379,12 +414,12 @@ public class VTratamientos extends javax.swing.JInternalFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBmod;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jBuscar;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<Tratamiento> jCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
