@@ -203,6 +203,8 @@ public class MascotaData {
                    mascota.setPelaje(rs.getString("pelaje"));                
                    mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
                    mascota.setEstado(true);
+                   mascota.setEspecie(rs.getString("especie"));
+                   mascota.setIdCliente(rs.getInt("idCliente"));
                     mascotas.add(mascota);
                 }
                 ps.close();

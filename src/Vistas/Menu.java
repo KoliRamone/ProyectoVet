@@ -29,29 +29,21 @@ public class Menu extends javax.swing.JFrame {
 
         button1 = new java.awt.Button();
         jLabelPrincipal = new javax.swing.JLabel();
-        jBsalir = new javax.swing.JButton();
         jBclientes = new javax.swing.JButton();
         jBmascotas = new javax.swing.JButton();
         jBtratamientos = new javax.swing.JButton();
         jBvisitas = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
         jBconsultas = new javax.swing.JButton();
+        jBsalir = new javax.swing.JButton();
 
         button1.setLabel("button1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 700));
+        setPreferredSize(new java.awt.Dimension(1278, 840));
 
         jLabelPrincipal.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabelPrincipal.setText("Veterinaria");
-
-        jBsalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jBsalir.setText("Salir de la aplicacion");
-        jBsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBsalirActionPerformed(evt);
-            }
-        });
 
         jBclientes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jBclientes.setText("Clientes");
@@ -91,7 +83,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 915, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,6 +95,14 @@ public class Menu extends javax.swing.JFrame {
         jBconsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBconsultasActionPerformed(evt);
+            }
+        });
+
+        jBsalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jBsalir.setText("Salir de la aplicacion");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
             }
         });
 
@@ -121,28 +121,28 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jBmascotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBclientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27)
-                        .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 915, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(45, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabelPrincipal)
-                                .addGap(276, 276, 276))
+                                .addGap(339, 339, 339))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jBsalir)
-                                .addContainerGap())))))
+                                .addGap(22, 22, 22))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelPrincipal)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelPrincipal)
                         .addGap(18, 18, 18)
                         .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(104, 104, 104)
                         .addComponent(jBclientes)
                         .addGap(18, 18, 18)
                         .addComponent(jBmascotas)
@@ -209,6 +209,13 @@ public class Menu extends javax.swing.JFrame {
 
     private void jBconsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultasActionPerformed
         // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VConsultas vc= new VConsultas();
+        vc.setVisible(true);
+        escritorio.add(vc);
+        escritorio.moveToFront(vc);
+        vc.move(10, 0);
     }//GEN-LAST:event_jBconsultasActionPerformed
 
     /**

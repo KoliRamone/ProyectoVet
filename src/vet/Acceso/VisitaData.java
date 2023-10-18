@@ -39,7 +39,22 @@ public class VisitaData {
             ps.setBoolean(6, true);
             ps.setBoolean(7, visita.isEnfermedad());
             
-            ps.executeUpdate();
+            
+            int respuesta = JOptionPane.showOptionDialog(null, "¿Quieres guardar esta visita?"+"\n"+" Luego de guardarla quedara en la base de datos "+"\n"+" no podra modificarse", "ADVERTENCIA", 
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Sí", "No"}, "No");
+        
+            if (respuesta == JOptionPane.YES_OPTION) {
+            
+                     ps.executeUpdate();     
+             
+            
+        } else if (respuesta == JOptionPane.NO_OPTION) {
+            
+        }
+            
+            
+            
+           
             ResultSet rs=ps.getGeneratedKeys();
             if(rs.next()){
                 visita.setIdVisita(rs.getInt(1));

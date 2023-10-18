@@ -192,6 +192,10 @@ public class ClienteData {
                     cliente.setApellido(rs.getString("apellido"));
                     cliente.setNombre(rs.getString("nombre"));
                     cliente.setEstado(rs.getBoolean("estado"));
+                    cliente.setNombreAlt(rs.getString("nombreAlt"));
+                    cliente.setTelAlt(rs.getInt("telefonoAlt"));
+                    cliente.setDire(rs.getString("dirección"));
+                    cliente.setTel(rs.getInt("telefono"));
                     clientes.add(cliente);
                 }
                 ps.close();
