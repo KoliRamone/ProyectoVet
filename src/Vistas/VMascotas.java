@@ -497,7 +497,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
         jTextPelo.setText(pelo);
         jDate.setDate(Date.valueOf(m.getFechaNac()));
         jLabelNumero.setText(String.valueOf(m.getIdMascota()));
-     
+    
        }catch(NullPointerException a){
            if(jTextAlias.getText().equalsIgnoreCase("") || jComboCliente.getSelectedIndex()==-1){
        JOptionPane.showMessageDialog(this, "faltan completar los campos");}

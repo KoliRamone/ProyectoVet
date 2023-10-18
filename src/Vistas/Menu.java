@@ -11,7 +11,7 @@ package Vistas;
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**
+    /**8
      * Creates new form Menu
      */
     public Menu() {
