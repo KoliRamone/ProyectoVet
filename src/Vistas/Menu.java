@@ -5,6 +5,10 @@
  */
 package Vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Exon
@@ -33,14 +37,20 @@ public class Menu extends javax.swing.JFrame {
         jBmascotas = new javax.swing.JButton();
         jBtratamientos = new javax.swing.JButton();
         jBvisitas = new javax.swing.JButton();
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagen/fondo.png"));
+        Image image = icon.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jBconsultas = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
 
         button1.setLabel("button1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1278, 840));
+        setBackground(new java.awt.Color(0, 115, 133));
 
         jLabelPrincipal.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabelPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BannerVet.png"))); // NOI18N
@@ -63,7 +73,6 @@ public class Menu extends javax.swing.JFrame {
 
         jBtratamientos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jBtratamientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BnTratam.png"))); // NOI18N
-        jBtratamientos.setActionCommand("");
         jBtratamientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtratamientosActionPerformed(evt);
@@ -84,11 +93,11 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 915, Short.MAX_VALUE)
+            .addGap(0, 979, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 537, Short.MAX_VALUE)
         );
 
         jBconsultas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -100,7 +109,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jBsalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jBsalir.setText("Salir de la aplicacion");
+        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BnSalir.png"))); // NOI18N
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
@@ -123,11 +132,15 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jBvisitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBmascotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBclientes, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelPrincipal)
-                    .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 915, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabelPrincipal)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +148,6 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabelPrincipal)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBclientes)
                         .addGap(18, 18, 18)
@@ -145,8 +157,10 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBtratamientos)
                         .addGap(18, 18, 18)
-                        .addComponent(jBconsultas)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBconsultas)
+                        .addGap(0, 240, Short.MAX_VALUE))
+                    .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBsalir)
                 .addContainerGap())
         );
@@ -163,11 +177,6 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(cl);
         cl.move(10, 0);
     }//GEN-LAST:event_jBclientesActionPerformed
-
-    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBvisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBvisitasActionPerformed
         // TODO add your handling code here:
@@ -211,6 +220,11 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(vc);
         vc.move(10, 0);
     }//GEN-LAST:event_jBconsultasActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jBsalirActionPerformed
 
     /**
      * @param args the command line arguments
