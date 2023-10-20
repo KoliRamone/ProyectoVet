@@ -99,7 +99,7 @@ public class Menu extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 537, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jBconsultas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -160,8 +160,8 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jBtratamientos)
                         .addGap(18, 18, 18)
                         .addComponent(jBconsultas)
-                        .addGap(0, 240, Short.MAX_VALUE))
-                    .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBsalir)
                 .addContainerGap())
