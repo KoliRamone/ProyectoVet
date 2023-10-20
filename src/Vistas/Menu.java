@@ -8,6 +8,8 @@ package Vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 
 /**
  *
@@ -15,10 +17,10 @@ import javax.swing.ImageIcon;
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**8
-     * Creates new form Menu
-     */
+    FondoPanel fondo = new FondoPanel();
+    
     public Menu() {
+        this.setContentPane(fondo);
         initComponents();
     }
 
@@ -260,7 +262,20 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    class FondoPanel extends JPanel{
+        private Image Imagen;
+      
+        @Override
+        public void paint (Graphics g){
+            Image imagen = new ImageIcon(getClass().getResource("/imagen/Fondo1.png")).getImage();
+            
+             g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
+            setOpaque(false);
+            super.paint(g);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private javax.swing.JDesktopPane escritorio;

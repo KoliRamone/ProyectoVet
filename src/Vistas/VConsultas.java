@@ -5,7 +5,11 @@
  */
 package Vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vet.Acceso.*;
 import vet.Entidades.*;
@@ -29,6 +33,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
     
     private ArrayList<Clientes> acl=new ArrayList<>();
     private ArrayList<Mascotas> am=new ArrayList<>();
+    FondoPanel fondo = new FondoPanel();
     
     
     
@@ -38,7 +43,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
         md=new MascotaData();
         td=new TratamientoData();
         vd=new VisitaData();
-        
+        this.setContentPane(fondo);
         initComponents();
         armarCabeceraCL();
     }
@@ -150,7 +155,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
     
         
        
-        
+
         
         
         
@@ -243,20 +248,21 @@ public class VConsultas extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(39, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBsalir, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(723, Short.MAX_VALUE)
+                        .addComponent(jBsalir))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jBclientes)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBmascotas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBvisitas)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBtrat)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jBclientes)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBmascotas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBvisitas)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBtrat)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -318,7 +324,18 @@ this.dispose();        // TODO add your handling code here:
         armarCabeceraTRA();
     }//GEN-LAST:event_jBtratActionPerformed
 
-
+     class FondoPanel extends JPanel{
+        private Image Imagen;
+      
+        @Override
+        public void paint (Graphics g){
+            Image imagen = new ImageIcon(getClass().getResource("/imagen/Fondo1.png")).getImage();
+            
+             g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
+            setOpaque(false);
+            super.paint(g);
+        }
+    }  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBclientes;
     private javax.swing.JButton jBmascotas;
