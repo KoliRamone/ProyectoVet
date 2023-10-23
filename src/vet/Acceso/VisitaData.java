@@ -11,7 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import vet.Entidades.Mascotas;
 import vet.Entidades.Tratamiento;
 import vet.Entidades.VisitaMascotas;
 
@@ -69,7 +72,35 @@ public class VisitaData {
         
     }
     
-    
+     public List<VisitaMascotas> listarVisitas() {
+        List<VisitaMascotas> vm = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM visitamacostas WHERE estado = 1 ";
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    VisitaMascotas visitas = new VisitaMascotas();
+                    
+                   visitas.setIdVisita(rs.getInt("idVisita"));
+                   visitas.setIdMascota(rs.getInt("idMascota"));
+                   visitas.setFechaVisit(rs.getDate("fechaVisita").toLocalDate());
+                   visitas.setPeso(rs.getDouble("peso"));
+                   visitas.setDescripcion(rs.getString("Descripcion"));
+                   visitas.setIdtrat(rs.getInt("idTrat"));
+                   visitas.setEstado(rs.getBoolean("estado"));
+                   visitas.setEnfermedad(rs.getBoolean("enfermedad"));
+                   
+                
+                    vm.add(visitas);
+                }
+                ps.close();
+                
+            }            
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
+        }
+        return vm;
+    }
     
     
     

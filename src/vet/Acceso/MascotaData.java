@@ -184,7 +184,39 @@ public class MascotaData {
     
     
     
-    
+      public Mascotas buscarMascotaPorIdCliente(int idCliente) {
+        Mascotas mascota = null;
+        String sql = "SELECT idMascota,Raza,Especie, Sexo,Pelaje,fechaNac,estado FROM mascota WHERE idCliente = ? AND estado=1";
+        @SuppressWarnings("UnusedAssignment")
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1,idCliente );
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                mascota=new Mascotas();
+                mascota.setIdMascota(rs.getInt("idMascota"));
+               
+                mascota.setRaza(rs.getString("raza"));
+                 mascota.setEspecie(rs.getString("especie"));
+                mascota.setSexo(rs.getString("sexo"));
+                mascota.setPelaje(rs.getString("pelaje"));                
+                mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                mascota.setEstado(true);
+                
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "No existe la mascota");
+            }
+            ps.close();
+        }catch (SQLException ex){
+                    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Mascota "+ex.getMessage());
+                    }
+            return mascota;
+        
+    }
     
     
     public List<Mascotas> listarMascotas() {
@@ -215,6 +247,37 @@ public class MascotaData {
         }
         return mascotas;
     }
-
+  public List<Mascotas> listarMascotasPorCliente(int id) {
+        List<Mascotas> mascotas = new ArrayList<>();
+        
+            String sql = "SELECT * FROM mascota WHERE estado = 1 AND idCliente=?";
+          try{  
+              PreparedStatement ps = con.prepareStatement(sql);
+                
+                 ps.setInt(1,id);
+                 ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                while (rs.next()) {
+                    Mascotas mascota = new Mascotas();
+                    
+                   mascota.setIdMascota(rs.getInt("idMascota"));
+                   mascota.setAlias(rs.getString("Alias"));
+                   mascota.setRaza(rs.getString("raza"));
+                   mascota.setSexo(rs.getString("sexo"));
+                   mascota.setPelaje(rs.getString("pelaje"));                
+                   mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                   mascota.setEstado(true);
+                   mascota.setEspecie(rs.getString("especie"));
+                   mascota.setIdCliente(rs.getInt("idCliente"));
+                    mascotas.add(mascota);
+                }
+                ps.close();
+                }else{JOptionPane.showMessageDialog(null, "no existe el cliente");}
+                       
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
+        }
+        return mascotas;
+    }
 }
  
