@@ -249,17 +249,17 @@ public class MascotaData {
     }
   public List<Mascotas> listarMascotasPorCliente(int id) {
         List<Mascotas> mascotas = new ArrayList<>();
-        
+        boolean entro=false;
             String sql = "SELECT * FROM mascota WHERE estado = 1 AND idCliente=?";
           try{  
               PreparedStatement ps = con.prepareStatement(sql);
                 
                  ps.setInt(1,id);
                  ResultSet rs = ps.executeQuery();
-                if(rs.next()){
+                
                 while (rs.next()) {
                     Mascotas mascota = new Mascotas();
-                    
+                    entro=true;
                    mascota.setIdMascota(rs.getInt("idMascota"));
                    mascota.setAlias(rs.getString("Alias"));
                    mascota.setRaza(rs.getString("raza"));
@@ -272,7 +272,7 @@ public class MascotaData {
                     mascotas.add(mascota);
                 }
                 ps.close();
-                }else{JOptionPane.showMessageDialog(null, "no existe el cliente");}
+          if(entro==false){JOptionPane.showMessageDialog(null, "no existe el cliente");}
                        
         }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());

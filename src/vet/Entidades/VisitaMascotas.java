@@ -109,6 +109,11 @@ public class VisitaMascotas {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "VisitaMascotas{" + "idVisita=" + idVisita + ", idMascota=" + idMascota + ", idtrat=" + idtrat + ", fechaVisit=" + fechaVisit + ", peso=" + peso + ", estado=" + estado + ", enfermedad=" + enfermedad + ", descripcion=" + descripcion + '}';
+    }
     
     
     

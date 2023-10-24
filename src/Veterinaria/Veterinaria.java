@@ -6,6 +6,7 @@
 package Veterinaria;
 
 
+import java.util.ArrayList;
 import vet.Acceso.*;
 import vet.Entidades.*;
 
@@ -28,6 +29,11 @@ public class Veterinaria {
         
         //for (Clientes cliente:cd.listarClientes()){
         //System.out.println(cliente);
-        //}     
+        //}    
+        
+     //  VisitaData vd=new VisitaData();
+      // ArrayList<VisitaMascotas> avm=new ArrayList<>();
+     // avm=(ArrayList)vd.listarVisitasPorMascotas(4);
+     //  System.out.println(avm);
     }   
 }

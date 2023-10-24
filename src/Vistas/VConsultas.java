@@ -38,6 +38,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
     private ArrayList<Mascotas> am=new ArrayList<>();
     private ArrayList<VisitaMascotas> avm=new ArrayList<>();
     private ArrayList<Tratamiento> atrat=new ArrayList<>();
+    private ArrayList<Tratamiento> atratfija=new ArrayList<>();
     FondoPanel fondo = new FondoPanel();
     
     
@@ -51,8 +52,20 @@ public class VConsultas extends javax.swing.JInternalFrame {
         this.setContentPane(fondo);
         initComponents();
         armarCabeceraCL();
+        cargarCombo();
     }
-
+ private void cargarCombo(){
+   
+         jComboT.removeAllItems();
+     atratfija=(ArrayList) td.obtenerTratamientos();
+    for(Tratamiento t:atratfija){
+    jComboT.addItem(t);
+    
+    }
+        jComboT.setSelectedIndex(-1);
+       
+    
+    }
     
      private void armarCabeceraCL(){
      cleanFilaTabla();
@@ -188,6 +201,10 @@ public class VConsultas extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextIDCliente = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextIDM = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jComboT = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(0, 115, 133));
 
@@ -254,6 +271,18 @@ public class VConsultas extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setText("Ingrese id de Mascota:");
+
+        jTextIDM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextIDMKeyTyped(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setText("Seleccione tipo de tratamiento:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -278,9 +307,18 @@ public class VConsultas extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80)
+                                .addComponent(jLabel3))
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboT, 0, 139, Short.MAX_VALUE)
+                            .addComponent(jTextIDM))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -289,13 +327,19 @@ public class VConsultas extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextIDM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBsalir)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -349,7 +393,7 @@ this.dispose();        // TODO add your handling code here:
         
          try{ 
         int id=Integer.parseInt(jTextIDCliente.getText());
-         m=new Mascotas();
+         
         
                
         am=(ArrayList) md.listarMascotasPorCliente(id);
@@ -376,11 +420,43 @@ this.dispose();        // TODO add your handling code here:
          cleanFilaTabla();
         armarCabeceraVI();
     
-        avm=(ArrayList) vd.listarVisitas();
-         for(VisitaMascotas visit: avm){
+        
+         try{ 
+             t=new Tratamiento();
+             t=(Tratamiento) jComboT.getSelectedItem();
+             int id=Integer.parseInt(jTextIDM.getText());
+             
+         
+         avm=(ArrayList) vd.listarVisitasPorMascotas(id,t.getIdTrat());
+         boolean b=avm.isEmpty();
+           
+             
+         if(b==false){
+             
+          for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
         }
-        // TODO add your handling code here:
+         }else{
+          avm=(ArrayList) vd.listarVisitas();
+          for(VisitaMascotas visit: avm){
+            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+        }
+         }
+           }catch(NullPointerException | NumberFormatException nu){
+                  avm=(ArrayList) vd.listarVisitas();
+          for(VisitaMascotas visit: avm){
+            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+        }
+                 }
+        
+               
+         
+        
+        
+        
+        
+        
+       
     }//GEN-LAST:event_jBvisitasActionPerformed
 
     private void jBtratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtratActionPerformed
@@ -403,6 +479,15 @@ this.dispose();        // TODO add your handling code here:
         evt.consume();
     }//GEN-LAST:event_jTextIDClienteKeyTyped
     }
+    private void jTextIDMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextIDMKeyTyped
+        // TODO add your handling code here:
+         if(Character.isLetter(evt.getKeyChar())){
+        evt.consume();
+        }
+        if(evt.getKeyChar()==KeyEvent.VK_SPACE){
+        evt.consume();
+    }//GEN-LAST:event_jTextIDMKeyTyped
+    }
      class FondoPanel extends JPanel{
         private Image Imagen;
       
@@ -421,10 +506,14 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jBtrat;
     private javax.swing.JButton jBvisitas;
+    private javax.swing.JComboBox<Tratamiento> jComboT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabla;
     private javax.swing.JTextField jTextIDCliente;
+    private javax.swing.JTextField jTextIDM;
     // End of variables declaration//GEN-END:variables
 }

@@ -102,7 +102,41 @@ public class VisitaData {
         return vm;
     }
     
-    
+     public List<VisitaMascotas> listarVisitasPorMascotas(int id,int idTrat) {
+        List<VisitaMascotas> visitas= new ArrayList<>();
+         boolean entro=false;
+            String sql = "SELECT * FROM visitamacostas WHERE estado=1 AND idMascota=? AND idTrat=?";
+          try{  
+              PreparedStatement ps = con.prepareStatement(sql);
+                
+                   ps.setInt(1,id);
+                   ps.setInt(2, idTrat);
+                 ResultSet rs = ps.executeQuery();
+                
+                    
+                while (rs.next()) {
+                    
+                    VisitaMascotas vi = new VisitaMascotas();
+                    entro=true;
+                   vi.setIdVisita(rs.getInt("idVisita"));
+                   vi.setIdMascota(rs.getInt("idMascota"));
+                   vi.setFechaVisit(rs.getDate("fechaVisita").toLocalDate());
+                   vi.setPeso(rs.getDouble("peso"));
+                   vi.setDescripcion(rs.getString("Descripcion"));
+                   vi.setIdtrat(rs.getInt("idTrat"));
+                   vi.setEstado(rs.getBoolean("estado"));
+                   vi.setEnfermedad(rs.getBoolean("enfermedad"));
+                    
+                    visitas.add(vi);
+                }
+                ps.close();
+             if(entro==false){JOptionPane.showMessageDialog(null, "no existe la mascota");}
+                       
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
+        }
+        return visitas;
+    }
     
     
 }
