@@ -53,6 +53,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
         initComponents();
         armarCabeceraCL();
         cargarCombo();
+          jLabelTrat.setText("Seleccione un Tratamiento");
     }
  private void cargarCombo(){
    
@@ -205,6 +206,8 @@ public class VConsultas extends javax.swing.JInternalFrame {
         jTextIDM = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jComboT = new javax.swing.JComboBox<>();
+        jLabelTrat = new javax.swing.JLabel();
+        jLabelPeso = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 115, 133));
 
@@ -283,6 +286,13 @@ public class VConsultas extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setText("Seleccione tipo de tratamiento:");
 
+        jLabelTrat.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabelTrat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelTrat.setText("jLabel5");
+
+        jLabelPeso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelPeso.setText("Peso Promedio de Mascota:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -295,32 +305,39 @@ public class VConsultas extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBclientes)
-                        .addGap(33, 33, 33)
-                        .addComponent(jBmascotas)
-                        .addGap(31, 31, 31)
-                        .addComponent(jBvisitas)
-                        .addGap(34, 34, 34)
-                        .addComponent(jBtrat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBsalir))
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(jBclientes)
+                                .addGap(33, 33, 33)
+                                .addComponent(jBmascotas)
+                                .addGap(31, 31, 31)
+                                .addComponent(jBvisitas)
+                                .addGap(34, 34, 34)
+                                .addComponent(jBtrat)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBsalir))
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(80, 80, 80)
+                                        .addComponent(jLabel3))
+                                    .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
-                                .addComponent(jLabel3))
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboT, 0, 139, Short.MAX_VALUE)
-                            .addComponent(jTextIDM))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboT, 0, 139, Short.MAX_VALUE)
+                                    .addComponent(jTextIDM))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,9 +354,13 @@ public class VConsultas extends javax.swing.JInternalFrame {
                     .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jTextIDM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTrat)
+                    .addComponent(jLabelPeso))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBsalir)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -420,17 +441,67 @@ this.dispose();        // TODO add your handling code here:
          cleanFilaTabla();
         armarCabeceraVI();
     
-        
-         try{ 
+        if(!jTextIDM.getText().equalsIgnoreCase("") && jComboT.getSelectedIndex()!=-1){
+       
              t=new Tratamiento();
              t=(Tratamiento) jComboT.getSelectedItem();
              int id=Integer.parseInt(jTextIDM.getText());
-             
+             if(jComboT.getSelectedIndex()==-1){
+              jLabelTrat.setText("Seleccione un Tratamiento");
+             }else{ jLabelTrat.setText(t.getTipoTrat());}
          
-         avm=(ArrayList) vd.listarVisitasPorMascotas(id,t.getIdTrat());
-         boolean b=avm.isEmpty();
-           
+              avm=(ArrayList) vd.listarVisitasPorMascotas(id,t.getIdTrat());
+              boolean b=avm.isEmpty();
+                jComboT.setSelectedIndex(-1); 
+         if(b==false){
              
+          for(VisitaMascotas visit: avm){
+            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+        }
+         }else{
+          avm=(ArrayList) vd.listarVisitas();
+          for(VisitaMascotas visit: avm){
+            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+        }}
+         
+         
+         
+         }else if(jTextIDM.getText().equalsIgnoreCase("") && jComboT.getSelectedIndex()!=-1){
+          t=new Tratamiento();
+          t=(Tratamiento) jComboT.getSelectedItem();
+          avm=(ArrayList) vd.listarVisitasPorTrat(t.getIdTrat());
+          boolean b=avm.isEmpty();
+          if(jComboT.getSelectedIndex()==-1){
+              jLabelTrat.setText("Seleccione un Tratamiento");
+             }else{ jLabelTrat.setText(t.getTipoTrat());}
+          jComboT.setSelectedIndex(-1);
+          if(b==false){
+             
+          for(VisitaMascotas visit: avm){
+            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+        }
+         }else{
+          avm=(ArrayList) vd.listarVisitas();
+          for(VisitaMascotas visit: avm){
+            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+        }}
+          
+          
+          
+          
+          
+          }else if(!jTextIDM.getText().equalsIgnoreCase("") && jComboT.getSelectedIndex()==-1){
+         
+          avm=(ArrayList) vd.listarVisitasPorMascotas2(Integer.parseInt(jTextIDM.getText()));
+          m=new Mascotas();
+          m= md.buscarMascota(Integer.parseInt(jTextIDM.getText()));
+          boolean b=avm.isEmpty();
+         jLabelPeso.setText("Peso Promedio de "+m.getAlias()+": "+vd.listarPromedioPeso(Integer.parseInt(jTextIDM.getText()))+" "+"KG");
+         if(jComboT.getSelectedIndex()==-1){
+              jLabelTrat.setText("Seleccione un Tratamiento");
+             }else{ jLabelTrat.setText(t.getTipoTrat());}
+         jComboT.setSelectedIndex(-1);
+                 
          if(b==false){
              
           for(VisitaMascotas visit: avm){
@@ -441,13 +512,13 @@ this.dispose();        // TODO add your handling code here:
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
         }
-         }
-           }catch(NullPointerException | NumberFormatException nu){
-                  avm=(ArrayList) vd.listarVisitas();
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }
                  }
+             
+             
+//           avm=(ArrayList) vd.listarVisitas();
+       //   for(VisitaMascotas visit: avm){
+       //    tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                 
         
                
          
@@ -455,8 +526,30 @@ this.dispose();        // TODO add your handling code here:
         
         
         
-        
-       
+                 }else{
+           avm=(ArrayList) vd.listarVisitas();
+         boolean b=avm.isEmpty();
+         if(jComboT.getSelectedIndex()==-1){
+              jLabelTrat.setText("Seleccione un Tratamiento");
+             }else{ jLabelTrat.setText(t.getTipoTrat());}
+              jComboT.setSelectedIndex(-1);   
+         if(b==false){
+             
+          for(VisitaMascotas visit: avm){
+            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+        }
+         }else{
+          avm=(ArrayList) vd.listarVisitas();
+          for(VisitaMascotas visit: avm){
+            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+        }
+                 }
+          
+          
+          
+          
+          }
+            
     }//GEN-LAST:event_jBvisitasActionPerformed
 
     private void jBtratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtratActionPerformed
@@ -511,6 +604,8 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelPeso;
+    private javax.swing.JLabel jLabelTrat;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabla;
     private javax.swing.JTextField jTextIDCliente;

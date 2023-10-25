@@ -138,5 +138,156 @@ public class VisitaData {
         return visitas;
     }
     
-    
+    public List<VisitaMascotas> listarVisitasPorTrat(int idTrat) {
+        List<VisitaMascotas> visitas= new ArrayList<>();
+         boolean entro=false;
+            String sql = "SELECT * FROM visitamacostas WHERE estado=1 AND idTrat=?";
+          try{  
+              PreparedStatement ps = con.prepareStatement(sql);
+                
+                   
+                   ps.setInt(1, idTrat);
+                 ResultSet rs = ps.executeQuery();
+                
+                    
+                while (rs.next()) {
+                    
+                    VisitaMascotas vi = new VisitaMascotas();
+                    entro=true;
+                   vi.setIdVisita(rs.getInt("idVisita"));
+                   vi.setIdMascota(rs.getInt("idMascota"));
+                   vi.setFechaVisit(rs.getDate("fechaVisita").toLocalDate());
+                   vi.setPeso(rs.getDouble("peso"));
+                   vi.setDescripcion(rs.getString("Descripcion"));
+                   vi.setIdtrat(rs.getInt("idTrat"));
+                   vi.setEstado(rs.getBoolean("estado"));
+                   vi.setEnfermedad(rs.getBoolean("enfermedad"));
+                    
+                    visitas.add(vi);
+                }
+                ps.close();
+             if(entro==false){JOptionPane.showMessageDialog(null, "no existe la mascota");}
+                       
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
+        }
+        return visitas;
+}
+
+public List<VisitaMascotas> listarVisitasPorMascotas2(int id) {
+        List<VisitaMascotas> visitas= new ArrayList<>();
+         boolean entro=false;
+            String sql = "SELECT * FROM visitamacostas WHERE estado=1 AND idMascota=?";
+          try{  
+              PreparedStatement ps = con.prepareStatement(sql);
+                
+                   ps.setInt(1,id);
+                   
+                 ResultSet rs = ps.executeQuery();
+                
+                    
+                while (rs.next()) {
+                    
+                    VisitaMascotas vi = new VisitaMascotas();
+                    entro=true;
+                   vi.setIdVisita(rs.getInt("idVisita"));
+                   vi.setIdMascota(rs.getInt("idMascota"));
+                   vi.setFechaVisit(rs.getDate("fechaVisita").toLocalDate());
+                   vi.setPeso(rs.getDouble("peso"));
+                   vi.setDescripcion(rs.getString("Descripcion"));
+                   vi.setIdtrat(rs.getInt("idTrat"));
+                   vi.setEstado(rs.getBoolean("estado"));
+                   vi.setEnfermedad(rs.getBoolean("enfermedad"));
+                    
+                    visitas.add(vi);
+                }
+                ps.close();
+             if(entro==false){JOptionPane.showMessageDialog(null, "no existe la mascota");}
+                       
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
+        }
+        return visitas;
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+public double listarPromedioPeso(int id) {
+       
+         boolean entro=false;
+         double promedio=0;
+         double peso=0;
+         int contador=0;
+            String sql = "SELECT * FROM visitamacostas WHERE estado=1 AND idMascota=?";
+          try{  
+              PreparedStatement ps = con.prepareStatement(sql);
+                
+                   ps.setInt(1,id);
+                   
+                 ResultSet rs = ps.executeQuery();
+                
+                    
+                while (rs.next()) {
+                    
+                    VisitaMascotas vi = new VisitaMascotas();
+                    entro=true;
+                  
+                   vi.setPeso(rs.getDouble("peso"));
+                  
+                 
+                   contador++;
+                   peso=vi.getPeso() +peso;
+                   if(contador>0){
+                   promedio= peso/contador;
+                     
+                   }
+                    
+                }
+                ps.close();
+             if(entro==false){JOptionPane.showMessageDialog(null, "no existe la mascota");}
+                       
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
+        }
+        return promedio;
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

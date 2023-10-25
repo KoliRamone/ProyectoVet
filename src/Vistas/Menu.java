@@ -221,6 +221,9 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(vc);
         escritorio.moveToFront(vc);
         vc.move(10, 0);
+     
+            
+           
     }//GEN-LAST:event_jBconsultasActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
