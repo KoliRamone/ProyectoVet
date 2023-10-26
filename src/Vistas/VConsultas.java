@@ -233,7 +233,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
         });
 
         jBclientes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jBclientes.setText("Clientes");
+        jBclientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BnCliente.png"))); // NOI18N
         jBclientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBclientesActionPerformed(evt);
@@ -241,7 +241,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
         });
 
         jBmascotas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jBmascotas.setText("Mascotas");
+        jBmascotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BnMascots.png"))); // NOI18N
         jBmascotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBmascotasActionPerformed(evt);
@@ -249,7 +249,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
         });
 
         jBtrat.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jBtrat.setText("Tratamientos");
+        jBtrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BnTratam.png"))); // NOI18N
         jBtrat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtratActionPerformed(evt);
@@ -257,7 +257,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
         });
 
         jBvisitas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jBvisitas.setText("Visitas");
+        jBvisitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BnVisita.png"))); // NOI18N
         jBvisitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBvisitasActionPerformed(evt);
@@ -266,7 +266,8 @@ public class VConsultas extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BannerVetConsul.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(216, 227, 240));
         jLabel2.setText("Ingrese id de cliente:");
 
         jTextIDCliente.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -275,7 +276,8 @@ public class VConsultas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(216, 227, 240));
         jLabel3.setText("Ingrese id de Mascota:");
 
         jTextIDM.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -284,17 +286,21 @@ public class VConsultas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(216, 227, 240));
         jLabel4.setText("Seleccione tipo de tratamiento:");
 
-        jLabelTrat.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabelTrat.setFont(new java.awt.Font("Candara", 1, 36)); // NOI18N
+        jLabelTrat.setForeground(new java.awt.Color(255, 204, 0));
         jLabelTrat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelTrat.setText("jLabel5");
 
-        jLabelPeso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelPeso.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabelPeso.setForeground(new java.awt.Color(216, 227, 240));
         jLabelPeso.setText("Peso Promedio:");
 
-        jLabelPesoA.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelPesoA.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabelPesoA.setForeground(new java.awt.Color(216, 227, 240));
         jLabelPesoA.setText("Peso Actual:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -304,17 +310,14 @@ public class VConsultas extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBclientes)
-                        .addGap(33, 33, 33)
-                        .addComponent(jBmascotas)
-                        .addGap(31, 31, 31)
-                        .addComponent(jBvisitas)
-                        .addGap(34, 34, 34)
-                        .addComponent(jBtrat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBsalir))
                     .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPesoA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPeso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(107, 107, 107))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -329,17 +332,17 @@ public class VConsultas extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboT, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextIDM, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 50, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabelPesoA, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(107, 107, 107)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBclientes, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jBmascotas, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jBvisitas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jBtrat, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBsalir)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -362,22 +365,23 @@ public class VConsultas extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextIDM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabelPesoA)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelPesoA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelPeso))
+                    .addComponent(jLabelTrat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTrat)
-                    .addComponent(jLabelPeso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBsalir)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBmascotas)
-                        .addComponent(jBclientes)
                         .addComponent(jBvisitas)
-                        .addComponent(jBtrat)))
-                .addContainerGap())
+                        .addComponent(jBtrat)
+                        .addComponent(jBmascotas)
+                        .addComponent(jBclientes))
+                    .addComponent(jBsalir))
+                .addGap(25, 25, 25))
         );
 
         pack();

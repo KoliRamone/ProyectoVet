@@ -5,11 +5,13 @@
  */
 package Vistas;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 
 /**
@@ -50,11 +52,14 @@ public class Menu extends javax.swing.JFrame {
         jBconsultas = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
         jBruleta = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         button1.setLabel("button1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 115, 133));
+        setPreferredSize(new java.awt.Dimension(1234, 850));
 
         jLabelPrincipal.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabelPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BannerVet.png"))); // NOI18N
@@ -97,7 +102,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 979, Short.MAX_VALUE)
+            .addGap(0, 987, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,12 +126,20 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jBruleta.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        jBruleta.setText("Ruleta");
+        jBruleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BnRuleta.png"))); // NOI18N
         jBruleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBruletaActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(216, 227, 240));
+        jLabel1.setText("(Si el numero coincide con el ultimo");
+
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(216, 227, 240));
+        jLabel2.setText("        de visita, gana un premio)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,22 +151,28 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBtratamientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBconsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBvisitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBmascotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBclientes, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(jBruleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBtratamientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBconsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBvisitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBmascotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBclientes, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE))
                         .addGap(27, 27, 27)
                         .addComponent(jLabelPrincipal)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 320, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jBruleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,6 +180,11 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabelPrincipal)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBsalir)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBclientes)
                         .addGap(18, 18, 18)
@@ -171,13 +195,13 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jBtratamientos)
                         .addGap(18, 18, 18)
                         .addComponent(jBconsultas)
-                        .addGap(152, 152, 152)
-                        .addComponent(jBruleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 73, Short.MAX_VALUE))
-                    .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBsalir)
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addComponent(jBruleta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94))))
         );
 
         pack();
@@ -245,11 +269,20 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBruletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBruletaActionPerformed
-                                             
+     
+        
+
+        
     // Código que se ejecuta cuando se hace clic en el botón
     int numeroGanador = (int) (Math.random() * 9); // Genera un número aleatorio entre 0 y 9
-    
-    JOptionPane.showMessageDialog(this, "El número ganador es: " + numeroGanador);
+    String mensaje = "El número ganador es:  "  +numeroGanador;
+    String titulo = "LA RULETA ESTÁ GIRANDO...";
+    Font font = new Font("Candara", Font.BOLD, 16);
+    Font font2 = new Font("Candara", Font.BOLD, 24);
+    UIManager.put("OptionPane.messageFont", font2);
+    UIManager.put("OptionPane.buttonFont", font);
+    UIManager.put("OptionPane.titleFont", font);
+    JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jBruletaActionPerformed
 
     /**
@@ -310,6 +343,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jBtratamientos;
     private javax.swing.JButton jBvisitas;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelPrincipal;
     // End of variables declaration//GEN-END:variables
 }
