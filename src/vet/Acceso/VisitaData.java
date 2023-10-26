@@ -277,6 +277,50 @@ public double listarPromedioPeso(int id) {
 
 
 
+public double listarPesoActual(int id) {
+       
+        
+         double peso=0;
+         boolean entro=false;
+            String sql = "SELECT * FROM visitamacostas WHERE estado=1 AND idMascota=?";
+          try{  
+              PreparedStatement ps = con.prepareStatement(sql);
+                
+                   ps.setInt(1,id);
+                   
+                 ResultSet rs = ps.executeQuery();
+                
+                    
+                while (rs.next()) {
+                    
+                    VisitaMascotas vi = new VisitaMascotas();
+                    entro=true;
+                  
+                 vi.setPeso(rs.getDouble("peso"));
+                 peso=vi.getPeso();
+                 
+                 
+                    
+                }
+                ps.close();
+             if(entro==false){JOptionPane.showMessageDialog(null, "no existe la mascota");}
+                       
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
+        }
+        return peso;
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 

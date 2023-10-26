@@ -258,8 +258,14 @@ FondoPanel fondo = new FondoPanel();
     }
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
+        trat=(Tratamiento)jComboT.getSelectedItem();
+         int respuesta = JOptionPane.showOptionDialog(null, "El importe a abonar es de: "+trat.getImporte(), "Visita Finalizada", 
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Pagar", "Cancelar"}, "Cancelar");
         
-        try{
+        if (respuesta == JOptionPane.YES_OPTION) {
+            
+                   
+              try{
               mas=(Mascotas)jComboM.getSelectedItem();
               trat=(Tratamiento) jComboT.getSelectedItem();
               double peso=Double.parseDouble(jTextPeso.getText());
@@ -278,6 +284,27 @@ FondoPanel fondo = new FondoPanel();
         
         
         }
+             
+             
+             
+             
+             
+             
+             
+            
+        } else if (respuesta == JOptionPane.NO_OPTION) {
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
         
         
         

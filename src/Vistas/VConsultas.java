@@ -208,6 +208,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
         jComboT = new javax.swing.JComboBox<>();
         jLabelTrat = new javax.swing.JLabel();
         jLabelPeso = new javax.swing.JLabel();
+        jLabelPesoA = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 115, 133));
 
@@ -291,53 +292,59 @@ public class VConsultas extends javax.swing.JInternalFrame {
         jLabelTrat.setText("jLabel5");
 
         jLabelPeso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabelPeso.setText("Peso Promedio de Mascota:");
+        jLabelPeso.setText("Peso Promedio:");
+
+        jLabelPesoA.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelPesoA.setText("Peso Actual:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jLabel1)
-                .addContainerGap(111, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBclientes)
-                                .addGap(33, 33, 33)
-                                .addComponent(jBmascotas)
-                                .addGap(31, 31, 31)
-                                .addComponent(jBvisitas)
-                                .addGap(34, 34, 34)
-                                .addComponent(jBtrat)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBsalir))
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(80, 80, 80)
-                                        .addComponent(jLabel3))
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboT, 0, 139, Short.MAX_VALUE)
-                                    .addComponent(jTextIDM))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBclientes)
+                        .addGap(33, 33, 33)
+                        .addComponent(jBmascotas)
+                        .addGap(31, 31, 31)
+                        .addComponent(jBvisitas)
+                        .addGap(34, 34, 34)
+                        .addComponent(jBtrat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))))
+                        .addComponent(jBsalir))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(127, 127, 127)
+                                .addComponent(jLabel3))
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboT, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextIDM, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 50, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabelPesoA, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(107, 107, 107)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +361,9 @@ public class VConsultas extends javax.swing.JInternalFrame {
                     .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jTextIDM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelPesoA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTrat)
                     .addComponent(jLabelPeso))
@@ -379,6 +388,7 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBclientesActionPerformed
+        jTextIDM.setText("");
         cleanFilaTabla();
         armarCabeceraCL();
        
@@ -390,16 +400,25 @@ this.dispose();        // TODO add your handling code here:
         
             cl=cd.buscarCliente(id);
         tabla.addRow(new Object[] {cl.getIdCliente(),cl.getDni(),cl.getApellido(),cl.getNombre(),cl.getDire(),cl.getTel(),cl.getNombreAlt(),cl.getTelAlt()});
-            
+             jLabelTrat.setText("Cliente "+cl.getNombre());
+              jTextIDM.setText("");
+                jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
         }catch(NumberFormatException n){
          acl=(ArrayList) cd.listarClientes();
-        
+         jLabelTrat.setText("Lista de Clientes");
+          jTextIDM.setText("");
+            jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
          for(Clientes c: acl){
            tabla.addRow(new Object [] {c.getIdCliente(), c.getDni(), c.getApellido(),c.getNombre(),c.getDire(),c.getTel(),c.getNombreAlt(),c.getTelAlt()});
        }
        }catch(NullPointerException nu){
          acl=(ArrayList) cd.listarClientes();
-        
+         jLabelTrat.setText("Lista de Clientes");
+          jTextIDM.setText("");
+            jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
          for(Clientes c: acl){
            tabla.addRow(new Object [] {c.getIdCliente(), c.getDni(), c.getApellido(),c.getNombre(),c.getDire(),c.getTel(),c.getNombreAlt(),c.getTelAlt()});
        }
@@ -409,7 +428,8 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBclientesActionPerformed
 
     private void jBmascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmascotasActionPerformed
-       cleanFilaTabla();
+        jTextIDM.setText("");
+        cleanFilaTabla();
         armarCabeceraMA();
         
          try{ 
@@ -423,13 +443,25 @@ this.dispose();        // TODO add your handling code here:
         if(b==false){
          for(Mascotas mas: am){
             tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
-        }
+             jLabelTrat.setText("Mascota "+mas.getAlias());
+              jTextIDM.setText("");
+                jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
+         }
         }else{  am=(ArrayList) md.listarMascotas();
-         for(Mascotas mas: am){
+        jLabelTrat.setText("Lista de Mascotas");
+         jTextIDM.setText("");
+           jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
+        for(Mascotas mas: am){
             tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
         }}
          }catch(NullPointerException | NumberFormatException nu){
           am=(ArrayList) md.listarMascotas();
+           jLabelTrat.setText("Lista de Mascotas");
+            jTextIDM.setText("");
+              jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
          for(Mascotas mas: am){
             tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
         }
@@ -446,19 +478,25 @@ this.dispose();        // TODO add your handling code here:
              t=new Tratamiento();
              t=(Tratamiento) jComboT.getSelectedItem();
              int id=Integer.parseInt(jTextIDM.getText());
+            
              if(jComboT.getSelectedIndex()==-1){
-              jLabelTrat.setText("Seleccione un Tratamiento");
+              jLabelTrat.setText("Seleccione un Tratamiento Para Buscar");
              }else{ jLabelTrat.setText(t.getTipoTrat());}
          
               avm=(ArrayList) vd.listarVisitasPorMascotas(id,t.getIdTrat());
               boolean b=avm.isEmpty();
+              jLabelPeso.setText("Peso Promedio: "+vd.listarPromedioPeso(Integer.parseInt(jTextIDM.getText()))+" "+"KG");
+              jLabelPesoA.setText("Peso Actual: "+String.valueOf(vd.listarPesoActual(Integer.parseInt(jTextIDM.getText())))+" KG");
+        
+               jTextIDM.setText("");
                 jComboT.setSelectedIndex(-1); 
          if(b==false){
-             
+              jTextIDM.setText("");
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
         }
          }else{
+              jTextIDM.setText("");
           avm=(ArrayList) vd.listarVisitas();
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
@@ -473,14 +511,22 @@ this.dispose();        // TODO add your handling code here:
           boolean b=avm.isEmpty();
           if(jComboT.getSelectedIndex()==-1){
               jLabelTrat.setText("Seleccione un Tratamiento");
+               jTextIDM.setText("");
              }else{ jLabelTrat.setText(t.getTipoTrat());}
           jComboT.setSelectedIndex(-1);
           if(b==false){
-             
+              jTextIDM.setText("");
+              jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
+        
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
         }
          }else{
+               jTextIDM.setText("");
+                jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
+        
           avm=(ArrayList) vd.listarVisitas();
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
@@ -496,37 +542,39 @@ this.dispose();        // TODO add your handling code here:
           m=new Mascotas();
           m= md.buscarMascota(Integer.parseInt(jTextIDM.getText()));
           boolean b=avm.isEmpty();
-         jLabelPeso.setText("Peso Promedio de "+m.getAlias()+": "+vd.listarPromedioPeso(Integer.parseInt(jTextIDM.getText()))+" "+"KG");
+         jLabelPeso.setText("Peso Promedio: "+vd.listarPromedioPeso(Integer.parseInt(jTextIDM.getText()))+" "+"KG");
+         jLabelPesoA.setText("Peso Actual: "+String.valueOf(vd.listarPesoActual(Integer.parseInt(jTextIDM.getText())))+" KG");
          if(jComboT.getSelectedIndex()==-1){
-              jLabelTrat.setText("Seleccione un Tratamiento");
+            //   jTextIDM.setText("");
              }else{ jLabelTrat.setText(t.getTipoTrat());}
          jComboT.setSelectedIndex(-1);
                  
          if(b==false){
-             
+              
+             jLabelTrat.setText("Visitas de "+m.getAlias());
+              jLabelPeso.setText("Peso Promedio: "+vd.listarPromedioPeso(Integer.parseInt(jTextIDM.getText()))+" "+"KG");
+         jLabelPesoA.setText("Peso Actual: "+String.valueOf(vd.listarPesoActual(Integer.parseInt(jTextIDM.getText())))+" KG");
+        jTextIDM.setText("");
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
         }
          }else{
+             
+                jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
           avm=(ArrayList) vd.listarVisitas();
+           jTextIDM.setText("");
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }
+       
+          }
                  }
              
              
-//           avm=(ArrayList) vd.listarVisitas();
-       //   for(VisitaMascotas visit: avm){
-       //    tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-                 
-        
-               
-         
-        
-        
-        
+    
         
                  }else{
+               jTextIDM.setText("");
            avm=(ArrayList) vd.listarVisitas();
          boolean b=avm.isEmpty();
          if(jComboT.getSelectedIndex()==-1){
@@ -534,11 +582,14 @@ this.dispose();        // TODO add your handling code here:
              }else{ jLabelTrat.setText(t.getTipoTrat());}
               jComboT.setSelectedIndex(-1);   
          if(b==false){
-             
+              jTextIDM.setText("");
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
         }
          }else{
+              jTextIDM.setText("");
+                jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
           avm=(ArrayList) vd.listarVisitas();
           for(VisitaMascotas visit: avm){
             tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
@@ -553,9 +604,13 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBvisitasActionPerformed
 
     private void jBtratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtratActionPerformed
+         jTextIDM.setText("");       
         cleanFilaTabla();
         armarCabeceraTRA();
         atrat=(ArrayList) td.obtenerTratamientos();
+         jLabelTrat.setText("Lista de Tratamientos");
+           jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
          for(Tratamiento tt: atrat){
             tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
         }
@@ -605,6 +660,7 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelPeso;
+    private javax.swing.JLabel jLabelPesoA;
     private javax.swing.JLabel jLabelTrat;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabla;
