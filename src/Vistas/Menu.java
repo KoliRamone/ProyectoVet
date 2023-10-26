@@ -8,6 +8,7 @@ package Vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -48,6 +49,7 @@ public class Menu extends javax.swing.JFrame {
         };
         jBconsultas = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
+        jBruleta = new javax.swing.JButton();
 
         button1.setLabel("button1");
 
@@ -118,6 +120,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jBruleta.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jBruleta.setText("Ruleta");
+        jBruleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBruletaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,7 +143,8 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jBconsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBvisitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBmascotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBclientes, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBclientes, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                    .addComponent(jBruleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -160,7 +171,9 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jBtratamientos)
                         .addGap(18, 18, 18)
                         .addComponent(jBconsultas)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(152, 152, 152)
+                        .addComponent(jBruleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 73, Short.MAX_VALUE))
                     .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBsalir)
@@ -231,6 +244,14 @@ public class Menu extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jBsalirActionPerformed
 
+    private void jBruletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBruletaActionPerformed
+                                             
+    // Código que se ejecuta cuando se hace clic en el botón
+    int numeroGanador = (int) (Math.random() * 9); // Genera un número aleatorio entre 0 y 9
+    
+    JOptionPane.showMessageDialog(this, "El número ganador es: " + numeroGanador);
+    }//GEN-LAST:event_jBruletaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -285,6 +306,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jBclientes;
     private javax.swing.JButton jBconsultas;
     private javax.swing.JButton jBmascotas;
+    private javax.swing.JButton jBruleta;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jBtratamientos;
     private javax.swing.JButton jBvisitas;

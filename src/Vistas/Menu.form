@@ -45,7 +45,8 @@
                   <Component id="jBconsultas" alignment="0" max="32767" attributes="0"/>
                   <Component id="jBvisitas" alignment="0" max="32767" attributes="0"/>
                   <Component id="jBmascotas" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jBclientes" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
+                  <Component id="jBclientes" alignment="0" pref="219" max="32767" attributes="0"/>
+                  <Component id="jBruleta" max="32767" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -78,7 +79,9 @@
                       <Component id="jBtratamientos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jBconsultas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
+                      <Component id="jBruleta" min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="73" max="32767" attributes="0"/>
                   </Group>
                   <Component id="escritorio" pref="563" max="32767" attributes="0"/>
               </Group>
@@ -200,6 +203,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBsalirActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBruleta">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Candara" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ruleta"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBruletaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
