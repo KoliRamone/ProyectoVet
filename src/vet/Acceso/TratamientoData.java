@@ -155,5 +155,46 @@ public class TratamientoData {
              JOptionPane.showConfirmDialog(null, "Error al acceder a la tabla de Tratamientos");
         }
         return ok;
-    }   
+    } 
+    
+     public List<Tratamiento>obtenerTratamientosInactivos(){
+        ArrayList<Tratamiento> ok= new ArrayList<>();
+        String sql= "SELECT * FROM tratamiento WHERE estado=0";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+             Tratamiento trat=new Tratamiento();
+             trat.setIdTrat(rs.getInt("idTrat"));
+             trat.setTipoTrat(rs.getString("tipoTrat"));
+             trat.setDescripcion(rs.getString("descripcion"));
+             trat.setImporte(rs.getDouble("importe"));
+             ok.add(trat);
+             }
+        } catch (SQLException ex) {
+             JOptionPane.showConfirmDialog(null, "Error al acceder a la tabla de tratamiento");
+        }
+        return ok;
+    }
+    
+      public void ActivarTratamiento(Tratamiento tratamiento){
+        String sql= "UPDATE tratamiento SET estado=1 WHERE idTrat=?";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+       
+            ps.setInt(1, tratamiento.getIdTrat());
+            
+            int exito= ps.executeUpdate();
+              if (exito==1){
+                  JOptionPane.showMessageDialog(null,"Tratamiento modificado");
+              }
+              else {
+                  JOptionPane.showMessageDialog(null,"El tratamiento no existe");
+              }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de tratamientos");
+        }
+        
+    }
 }

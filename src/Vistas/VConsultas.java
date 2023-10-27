@@ -54,6 +54,7 @@ public class VConsultas extends javax.swing.JInternalFrame {
         armarCabeceraCL();
         cargarCombo();
           jLabelTrat.setText("Seleccione un Tratamiento");
+          jBActivar.setVisible(false);
     }
  private void cargarCombo(){
    
@@ -209,6 +210,8 @@ public class VConsultas extends javax.swing.JInternalFrame {
         jLabelTrat = new javax.swing.JLabel();
         jLabelPeso = new javax.swing.JLabel();
         jLabelPesoA = new javax.swing.JLabel();
+        jRadio = new javax.swing.JRadioButton();
+        jBActivar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 115, 133));
 
@@ -223,6 +226,11 @@ public class VConsultas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTabla);
 
         jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Botones y vistas JAVA/BnSalir.png"))); // NOI18N
@@ -303,6 +311,18 @@ public class VConsultas extends javax.swing.JInternalFrame {
         jLabelPesoA.setForeground(new java.awt.Color(216, 227, 240));
         jLabelPesoA.setText("Peso Actual:");
 
+        jRadio.setText("Inactivos");
+
+        jBActivar.setBackground(new java.awt.Color(51, 255, 51));
+        jBActivar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jBActivar.setForeground(new java.awt.Color(0, 0, 0));
+        jBActivar.setText("Activar");
+        jBActivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBActivarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -313,11 +333,11 @@ public class VConsultas extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabelTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelPesoA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelPeso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(107, 107, 107))
+                        .addGap(140, 140, 140))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -330,18 +350,24 @@ public class VConsultas extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboT, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextIDM, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextIDM, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jComboT, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBclientes, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(18, 18, 18)
                         .addComponent(jBmascotas, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(18, 18, 18)
                         .addComponent(jBvisitas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
                         .addComponent(jBtrat, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jBActivar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addComponent(jBsalir)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -357,8 +383,9 @@ public class VConsultas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                    .addComponent(jComboT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadio))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,14 +400,14 @@ public class VConsultas extends javax.swing.JInternalFrame {
                     .addComponent(jLabelTrat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBvisitas)
-                        .addComponent(jBtrat)
-                        .addComponent(jBmascotas)
-                        .addComponent(jBclientes))
-                    .addComponent(jBsalir))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBActivar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBvisitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtrat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBmascotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBclientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBsalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
 
@@ -395,7 +422,7 @@ this.dispose();        // TODO add your handling code here:
         jTextIDM.setText("");
         cleanFilaTabla();
         armarCabeceraCL();
-       
+        jBActivar.setVisible(false);
         try{ 
         int id=Integer.parseInt(jTextIDCliente.getText());
         cl=new Clientes();
@@ -435,19 +462,21 @@ this.dispose();        // TODO add your handling code here:
         jTextIDM.setText("");
         cleanFilaTabla();
         armarCabeceraMA();
-        
+        jBActivar.setVisible(false);
          try{ 
         int id=Integer.parseInt(jTextIDCliente.getText());
          
         
                
         am=(ArrayList) md.listarMascotasPorCliente(id);
-             System.out.println(am);
+             
              boolean b = am.isEmpty();  // comprobar que el objeto este vacio
         if(b==false){
          for(Mascotas mas: am){
             tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
-             jLabelTrat.setText("Mascota "+mas.getAlias());
+            cl=new Clientes();
+            cl=cd.buscarCliente(id);
+            jLabelTrat.setText("Mascotas de "+cl.getNombre());
               jTextIDM.setText("");
                 jLabelPeso.setText("Peso Promedio: ");
               jLabelPesoA.setText("Peso Actual: ");
@@ -476,7 +505,7 @@ this.dispose();        // TODO add your handling code here:
     private void jBvisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBvisitasActionPerformed
          cleanFilaTabla();
         armarCabeceraVI();
-    
+         jBActivar.setVisible(false);
         if(!jTextIDM.getText().equalsIgnoreCase("") && jComboT.getSelectedIndex()!=-1){
        
              t=new Tratamiento();
@@ -608,17 +637,32 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBvisitasActionPerformed
 
     private void jBtratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtratActionPerformed
-         jTextIDM.setText("");       
+        jTextIDM.setText("");       
         cleanFilaTabla();
         armarCabeceraTRA();
+        
+        if(jRadio.isSelected()){
+              
+          jBActivar.setVisible(true);     
+         atrat=(ArrayList) td.obtenerTratamientosInactivos();
+         jLabelTrat.setText("Tratamientos Inactivos");
+         jLabelPeso.setText("Peso Promedio: ");
+         jLabelPesoA.setText("Peso Actual: ");
+          for(Tratamiento tt: atrat){
+            tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
+        
+          }
+        }else{
+          
+       jBActivar.setVisible(false);
         atrat=(ArrayList) td.obtenerTratamientos();
-         jLabelTrat.setText("Lista de Tratamientos");
+         jLabelTrat.setText("Tratamientos activos");
            jLabelPeso.setText("Peso Promedio: ");
               jLabelPesoA.setText("Peso Actual: ");
          for(Tratamiento tt: atrat){
             tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
         }
-        
+        }
         
     }//GEN-LAST:event_jBtratActionPerformed
 
@@ -640,6 +684,56 @@ this.dispose();        // TODO add your handling code here:
         evt.consume();
     }//GEN-LAST:event_jTextIDMKeyTyped
     }
+    private void jTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMouseClicked
+        // TODO add your handling code here:
+        
+       
+        
+        
+    }//GEN-LAST:event_jTablaMouseClicked
+
+    private void jBActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActivarActionPerformed
+        // TODO add your handling code here:
+        t=new Tratamiento();
+        
+         int filaselect=jTabla.getSelectedRow();
+        if(filaselect!=-1){
+           
+            
+           
+        Object miObjeto = jTabla.getValueAt(filaselect,0);  //crear objeto vacio , darle valor
+        int miEntero = (Integer) miObjeto;
+          t.setIdTrat(miEntero);
+          td.ActivarTratamiento(t);
+         jTextIDM.setText("");       
+        cleanFilaTabla();
+        armarCabeceraTRA();
+        
+        if(jRadio.isSelected()){
+         atrat=(ArrayList) td.obtenerTratamientosInactivos();
+         jLabelTrat.setText("Tratamientos Inactivos");
+         jLabelPeso.setText("Peso Promedio: ");
+         jLabelPesoA.setText("Peso Actual: ");
+          for(Tratamiento tt: atrat){
+            tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
+        }
+        }else{
+        
+        atrat=(ArrayList) td.obtenerTratamientos();
+         jLabelTrat.setText("Tratamientos activos");
+           jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
+         for(Tratamiento tt: atrat){
+            tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
+        }
+        }
+        
+           
+           
+         
+        }
+    }//GEN-LAST:event_jBActivarActionPerformed
+    
      class FondoPanel extends JPanel{
         private Image Imagen;
       
@@ -653,6 +747,7 @@ this.dispose();        // TODO add your handling code here:
         }
     }  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBActivar;
     private javax.swing.JButton jBclientes;
     private javax.swing.JButton jBmascotas;
     private javax.swing.JButton jBsalir;
@@ -666,6 +761,7 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JLabel jLabelPeso;
     private javax.swing.JLabel jLabelPesoA;
     private javax.swing.JLabel jLabelTrat;
+    private javax.swing.JRadioButton jRadio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabla;
     private javax.swing.JTextField jTextIDCliente;
