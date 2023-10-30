@@ -12,23 +12,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import vet.Entidades.Mascotas;
 import vet.Entidades.Tratamiento;
-
 
 public class TratamientoData {
     private Connection con=null;
     private MascotaData md= new MascotaData();
     
-    public TratamientoData() {
-        
+public TratamientoData() {      
        con=Conexion.getConexion();
     }        
  
-    public void guardarTratamiento(Tratamiento tratamiento) {
+public void guardarTratamiento(Tratamiento tratamiento) {
         String sql = "INSERT INTO tratamiento(tipoTrat, descripcion, importe, estado) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -41,17 +37,14 @@ public class TratamientoData {
             if(rs.next()){
                 tratamiento.setIdTrat(rs.getInt(1));
                 JOptionPane.showMessageDialog(null,"Tratamiento guardado");
-            }
-            
-            ps.close();
-            
+            }           
+            ps.close();           
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de tratamientos");
-        }
-        
+        }        
     }
     
-    public void modificarTratamiento(Tratamiento tratamiento){
+public void modificarTratamiento(Tratamiento tratamiento){
         String sql= "UPDATE tratamiento SET tipoTrat=?, descripcion=?, importe=?, estado=? WHERE idTrat=?";
         try {
             PreparedStatement ps= con.prepareStatement(sql);
@@ -59,41 +52,36 @@ public class TratamientoData {
             ps.setString(2, tratamiento.getDescripcion());
             ps.setDouble(3, tratamiento.getImporte());
             ps.setBoolean(4, tratamiento.isEstado());
-            ps.setInt(5, tratamiento.getIdTrat());
-            
+            ps.setInt(5, tratamiento.getIdTrat());            
             int exito= ps.executeUpdate();
               if (exito==1){
                   JOptionPane.showMessageDialog(null,"Tratamiento modificado");
               }
               else {
                   JOptionPane.showMessageDialog(null,"El tratamiento no existe");
-              }
-            
+              }           
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de tratamientos");
-        }
-        
+        }       
     }
     
-    public void eliminarTratamiento(int id){
+public void eliminarTratamiento(int id){
         String sql= "UPDATE tratamiento SET estado=0 WHERE idTrat=? ";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);
-            int exito=ps.executeUpdate();
-            
+            int exito=ps.executeUpdate();           
                if(exito==1){
                    JOptionPane.showMessageDialog(null,"Tratamiento eliminado");
                }
-            ps.close();
-            
+            ps.close();           
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de tratamientos");
         }
         
     }
     
-    public Tratamiento buscarTratamiento(int id){
+public Tratamiento buscarTratamiento(int id){
         String sql= "SELECT tipoTrat, descripcion, importe, estado FROM tratamiento WHERE idTrat=?";
         Tratamiento tratamiento=null;
         try {
@@ -119,7 +107,7 @@ public class TratamientoData {
         return tratamiento;
     }
     
-    public List<Tratamiento>obtenerTratamientos(){
+public List<Tratamiento>obtenerTratamientos(){
         ArrayList<Tratamiento> ok= new ArrayList<>();
         String sql= "SELECT * FROM tratamiento WHERE estado=1";
         try {
@@ -138,7 +126,8 @@ public class TratamientoData {
         }
         return ok;
     }
-    public List<Tratamiento> obtenerTratamientosPorMascota(int idMascota){
+    
+public List<Tratamiento> obtenerTratamientosPorMascota(int idMascota){
         ArrayList<Tratamiento> ok=new ArrayList<>();
         String sql="SELECT * FROM tratamiento WHERE idMascota = ?";
         try{ 
@@ -157,7 +146,7 @@ public class TratamientoData {
         return ok;
     } 
     
-     public List<Tratamiento>obtenerTratamientosInactivos(){
+public List<Tratamiento>obtenerTratamientosInactivos(){
         ArrayList<Tratamiento> ok= new ArrayList<>();
         String sql= "SELECT * FROM tratamiento WHERE estado=0";
         try {
@@ -177,24 +166,20 @@ public class TratamientoData {
         return ok;
     }
     
-      public void ActivarTratamiento(Tratamiento tratamiento){
+public void ActivarTratamiento(Tratamiento tratamiento){
         String sql= "UPDATE tratamiento SET estado=1 WHERE idTrat=?";
         try {
-            PreparedStatement ps= con.prepareStatement(sql);
-       
-            ps.setInt(1, tratamiento.getIdTrat());
-            
+            PreparedStatement ps= con.prepareStatement(sql);     
+            ps.setInt(1, tratamiento.getIdTrat());          
             int exito= ps.executeUpdate();
               if (exito==1){
                   JOptionPane.showMessageDialog(null,"Tratamiento modificado");
               }
               else {
                   JOptionPane.showMessageDialog(null,"El tratamiento no existe");
-              }
-            
+              }           
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla de tratamientos");
-        }
-        
+        }       
     }
 }

@@ -12,13 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.swing.JOptionPane;
-import vet.Entidades.Clientes;
 import vet.Entidades.Mascotas;
-
 
 public class MascotaData {
      private Connection con=null;
@@ -27,15 +23,12 @@ public class MascotaData {
         
         con=Conexion.getConexion();
     }
-    
-    
+      
     public void guardarMascota(Mascotas mascota){
         String sql="INSERT INTO Mascota(Alias, Raza,especie, Sexo, Pelaje, fechaNac,idCliente, estado)"
-                + "VALUES(?,?,?,?,?,?,?,?)";
-        
+                + "VALUES(?,?,?,?,?,?,?,?)";       
         try {
-            PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-                
+            PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);              
                 ps.setString(1,mascota.getAlias());
                 ps.setString(2,mascota.getRaza());
                 ps.setString(3, mascota.getEspecie());
@@ -50,9 +43,7 @@ public class MascotaData {
                     mascota.setIdCliente(rs.getInt(1));
                     JOptionPane.showMessageDialog(null,"Mascota guardada exitosamente");
                 }
-            ps.close();
-            
-            
+            ps.close();        
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"La mascota ya existe"); 
         }
@@ -62,22 +53,16 @@ public class MascotaData {
         String sql = "UPDATE mascota SET Alias = ? , Raza = ?, Sexo = ?, Pelaje = ?,estado=?,fechaNac=?,Especie=? WHERE idMascota = ?";
         @SuppressWarnings("UnusedAssignment")
        PreparedStatement ps = null;
-          try{
-              
+          try{              
                ps = con.prepareStatement(sql);
                ps.setString(1, Mascota.getAlias());
                ps.setString(2, Mascota.getRaza());
-               ps.setString(3, Mascota.getSexo());
-               
+               ps.setString(3, Mascota.getSexo());             
                ps.setString(4, Mascota.getPelaje());
                ps.setBoolean(5, Mascota.isEstado());   
                ps.setDate(6, Date.valueOf(Mascota.getFechaNac()));
                   ps.setString(7,Mascota.getEspecie());
-                 ps.setInt(8, Mascota.getIdMascota());
-          
-                          
-             
-               
+                 ps.setInt(8, Mascota.getIdMascota());                  
                int exito = ps.executeUpdate();
                if (exito == 1) {
                    JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -90,14 +75,12 @@ public class MascotaData {
                }
     }
   
-    public void eliminarMascota(int id) {
-        
+    public void eliminarMascota(int id) {        
         try {
             String sql = "UPDATE mascota SET estado = 0 WHERE idMascota = ? ";
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setInt(1, id);
-                int fila=ps.executeUpdate();
-                
+                int fila=ps.executeUpdate();               
                 if(fila==1){
                     JOptionPane.showMessageDialog(null, " Mascota eliminada del programa.");
                 }
@@ -117,8 +100,7 @@ public class MascotaData {
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1,id );
-            ResultSet rs = ps.executeQuery();
-            
+            ResultSet rs = ps.executeQuery();           
             if (rs.next()) {
                 mascota=new Mascotas();
                 mascota.setIdMascota(id);
@@ -126,11 +108,8 @@ public class MascotaData {
                 mascota.setRaza(rs.getString("raza"));
                 mascota.setSexo(rs.getString("sexo"));
                 mascota.setPelaje(rs.getString("pelaje"));                
-                mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
-                
-                mascota.setEstado(true);
-                
-                
+                mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());               
+                mascota.setEstado(true);             
             }
             else {
                 JOptionPane.showMessageDialog(null, "No existe la mascota");
@@ -142,12 +121,7 @@ public class MascotaData {
             return mascota;
         
     }
-    
-   
-    
-    
-
-    
+ 
      public Mascotas buscarMascota(int idCliente,String alias) {
         Mascotas mascota = null;
         String sql = "SELECT idMascota,Raza,Especie, Sexo,Pelaje,fechaNac,estado FROM mascota WHERE idCliente = ? AND Alias = ? AND estado=1";
@@ -157,19 +131,16 @@ public class MascotaData {
             ps = con.prepareStatement(sql);
             ps.setInt(1,idCliente );
             ps.setString(2, alias);
-            ResultSet rs = ps.executeQuery();
-            
+            ResultSet rs = ps.executeQuery();           
             if (rs.next()) {
                 mascota=new Mascotas();
-                mascota.setIdMascota(rs.getInt("idMascota"));
-               
+                mascota.setIdMascota(rs.getInt("idMascota"));              
                 mascota.setRaza(rs.getString("raza"));
                  mascota.setEspecie(rs.getString("especie"));
                 mascota.setSexo(rs.getString("sexo"));
                 mascota.setPelaje(rs.getString("pelaje"));                
                 mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
-                mascota.setEstado(true);
-                
+                mascota.setEstado(true);               
             }
             else {
                 JOptionPane.showMessageDialog(null, "No existe la mascota");
@@ -178,12 +149,9 @@ public class MascotaData {
         }catch (SQLException ex){
                     JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Mascota "+ex.getMessage());
                     }
-            return mascota;
-        
+            return mascota;       
     }
-    
-    
-    
+   
       public Mascotas buscarMascotaPorIdCliente(int idCliente) {
         Mascotas mascota = null;
         String sql = "SELECT idMascota,Raza,Especie, Sexo,Pelaje,fechaNac,estado FROM mascota WHERE idCliente = ? AND estado=1";
@@ -191,21 +159,17 @@ public class MascotaData {
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1,idCliente );
-            
-            ResultSet rs = ps.executeQuery();
-            
+            ps.setInt(1,idCliente );           
+            ResultSet rs = ps.executeQuery();           
             if (rs.next()) {
                 mascota=new Mascotas();
-                mascota.setIdMascota(rs.getInt("idMascota"));
-               
+                mascota.setIdMascota(rs.getInt("idMascota"));              
                 mascota.setRaza(rs.getString("raza"));
                  mascota.setEspecie(rs.getString("especie"));
                 mascota.setSexo(rs.getString("sexo"));
                 mascota.setPelaje(rs.getString("pelaje"));                
                 mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
-                mascota.setEstado(true);
-                
+                mascota.setEstado(true);              
             }
             else {
                 JOptionPane.showMessageDialog(null, "No existe la mascota");
@@ -214,11 +178,9 @@ public class MascotaData {
         }catch (SQLException ex){
                     JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Mascota "+ex.getMessage());
                     }
-            return mascota;
-        
+            return mascota;       
     }
-    
-    
+ 
     public List<Mascotas> listarMascotas() {
         List<Mascotas> mascotas = new ArrayList<>();
         try {
@@ -226,8 +188,7 @@ public class MascotaData {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    Mascotas mascota = new Mascotas();
-                    
+                    Mascotas mascota = new Mascotas();                    
                    mascota.setIdMascota(rs.getInt("idMascota"));
                    mascota.setAlias(rs.getString("Alias"));
                    mascota.setRaza(rs.getString("raza"));
@@ -239,24 +200,22 @@ public class MascotaData {
                    mascota.setIdCliente(rs.getInt("idCliente"));
                     mascotas.add(mascota);
                 }
-                ps.close();
-                
+                ps.close();           
             }            
         }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
         }
         return mascotas;
     }
+    
   public List<Mascotas> listarMascotasPorCliente(int id) {
         List<Mascotas> mascotas = new ArrayList<>();
         boolean entro=false;
             String sql = "SELECT * FROM mascota WHERE estado = 1 AND idCliente=?";
           try{  
-              PreparedStatement ps = con.prepareStatement(sql);
-                
+              PreparedStatement ps = con.prepareStatement(sql);             
                  ps.setInt(1,id);
-                 ResultSet rs = ps.executeQuery();
-                
+                 ResultSet rs = ps.executeQuery();                
                 while (rs.next()) {
                     Mascotas mascota = new Mascotas();
                     entro=true;
@@ -272,8 +231,7 @@ public class MascotaData {
                     mascotas.add(mascota);
                 }
                 ps.close();
-          if(entro==false){JOptionPane.showMessageDialog(null, "no existe el cliente");}
-                       
+          if(entro==false){JOptionPane.showMessageDialog(null, "no existe el cliente");}                       
         }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mascota "+ex.getMessage());
         }

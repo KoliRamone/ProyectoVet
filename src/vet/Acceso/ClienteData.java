@@ -35,8 +35,7 @@ public class ClienteData {
     
     public void guardarCliente(Clientes cliente){
         String sql="INSERT INTO cliente(dni, apellido, nombre,dirección,telefono,nombreAlt,telefonoAlt, estado)"
-                + "VALUES(?,?,?,?,?,?,?,?)";
-        
+                + "VALUES(?,?,?,?,?,?,?,?)";       
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1,cliente.getDni());
@@ -53,9 +52,7 @@ public class ClienteData {
                     cliente.setIdCliente(rs.getInt(1));
                     JOptionPane.showMessageDialog(null,"Cliente guardado exitosamente");
                 }
-            ps.close();
-            
-            
+            ps.close();       
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"El Cliente ya existe"); 
         }
@@ -127,11 +124,8 @@ public class ClienteData {
                 cliente.setDire(rs.getString("dirección"));
                 cliente.setTel(rs.getInt("telefono"));
                 cliente.setNombreAlt(rs.getString("nombreAlt"));
-                cliente.setTelAlt(rs.getInt("telefonoAlt"));
-            
-                
-                cliente.setEstado(true);
-                
+                cliente.setTelAlt(rs.getInt("telefonoAlt"));           
+                cliente.setEstado(true);           
             }
             else {
                 JOptionPane.showMessageDialog(null, "No existe el cliente");
@@ -140,8 +134,7 @@ public class ClienteData {
         }catch (SQLException ex){
                     JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente "+ex.getMessage());
                     }
-            return cliente;
-        
+            return cliente;      
     }
      
     public Clientes buscarClientePorDni(int dni) {
@@ -185,8 +178,7 @@ public class ClienteData {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    Clientes cliente = new Clientes();
-                    
+                    Clientes cliente = new Clientes();                   
                     cliente.setIdCliente(rs.getInt("idCliente"));
                     cliente.setDni(rs.getInt("dni"));
                     cliente.setApellido(rs.getString("apellido"));
@@ -198,8 +190,7 @@ public class ClienteData {
                     cliente.setTel(rs.getInt("telefono"));
                     clientes.add(cliente);
                 }
-                ps.close();
-                
+                ps.close();               
             }            
         }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla cliente "+ex.getMessage());

@@ -5,8 +5,6 @@
  */
 package vet.Entidades;
 
-import java.time.LocalDate;
-
 /**
  *
  * @author ev978
@@ -127,8 +125,5 @@ public class Clientes {
         return   idCliente +"-" + apellido + "," + nombre + "-" +dni ;
     }
        
-  
-
-
 }
     

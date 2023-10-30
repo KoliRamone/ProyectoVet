@@ -124,12 +124,5 @@ public class Mascotas {
     public String toString() {
         return   idMascota +"-" + alias + "," + fechaNac + "-" + idCliente ;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 }

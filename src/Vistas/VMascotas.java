@@ -12,7 +12,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -31,8 +30,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
     private MascotaData md=new MascotaData();
     private ClienteData cld=new ClienteData();
     FondoPanel fondo = new FondoPanel();
-    
-    
+ 
     public VMascotas() {
         this.setContentPane(fondo);
         initComponents();
@@ -42,7 +40,6 @@ public class VMascotas extends javax.swing.JInternalFrame {
         
         cargarCombo(cl);
     }
-
     
      private void cargarCombo(ArrayList<Clientes> b){
    
@@ -56,19 +53,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
          jComboCliente.setSelectedIndex(-1);
     
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -340,9 +325,6 @@ public class VMascotas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
@@ -353,9 +335,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
-        
-             try{
-       
+  try{
        String alias=jTextAlias.getText();
        String raza=jTextRaza.getText();
        String tipo=String.valueOf(jComboTipo.getSelectedItem());
@@ -363,44 +343,36 @@ public class VMascotas extends javax.swing.JInternalFrame {
        String pelo=jTextPelo.getText();
        LocalDate fecha=jDate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
    
-              
        Clientes cl= new Clientes();
        MascotaData md=new MascotaData();
        cl=(Clientes)jComboCliente.getSelectedItem();
        Mascotas m=new Mascotas(alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
        md.guardarMascota(m);
-       
-       
        m=md.buscarMascota(cl.getIdCliente(), alias);
        
        jLabelNumero.setText(String.valueOf(m.getIdMascota()));
-       
-       
-       
-       
+
        }catch(NullPointerException d){
        JOptionPane.showMessageDialog(null, "Faltan completar campos");
        }catch(NumberFormatException f){
        JOptionPane.showMessageDialog(null, "Verifique que cada campo este correcto");
-    }                                  
-        
-        
-        
+       }                                   
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jTextAliasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAliasKeyTyped
-        // TODO add your handling code here:
+
          if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
-        evt.consume();
-        
+        evt.consume();     
     }//GEN-LAST:event_jTextAliasKeyTyped
     }
+    
     private void jTextRazaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextRazaKeyTyped
-        // TODO add your handling code here:
+
          if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
         evt.consume();
     }//GEN-LAST:event_jTextRazaKeyTyped
     }
+    
     private void jComboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboClienteActionPerformed
@@ -410,28 +382,23 @@ public class VMascotas extends javax.swing.JInternalFrame {
         jComboTipo.setSelectedIndex(-1);
         jComboSexo.setSelectedIndex(-1);
          jComboCliente.setSelectedIndex(-1);
-        jTextAlias.setText("");
-        
-        jTextRaza.setText("");
-       
-        jTextPelo.setText("");
-        
+        jTextAlias.setText("");       
+        jTextRaza.setText("");       
+        jTextPelo.setText("");        
         jLabelNumero.setText("");
-        jDate.setDate(null);
-        
+        jDate.setDate(null);      
     }//GEN-LAST:event_jBnewMascotaActionPerformed
 
     private void jTextPeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPeloKeyTyped
-        // TODO add your handling code here:
+
          if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
         evt.consume();
     }//GEN-LAST:event_jTextPeloKeyTyped
     }
+    
     private void jBmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodActionPerformed
-        // TODO add your handling code here:
-        
-               try{
        
+               try{       
        String alias=jTextAlias.getText();
        String raza=jTextRaza.getText();
        String tipo=String.valueOf(jComboTipo.getSelectedItem());
@@ -445,22 +412,12 @@ public class VMascotas extends javax.swing.JInternalFrame {
        cl=(Clientes)jComboCliente.getSelectedItem();
        Mascotas m=new Mascotas(id,alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
        md.modificarMascota(m);
-       
-       
-       
-       
-       
+
        }catch(NullPointerException d){
        JOptionPane.showMessageDialog(null, "Faltan completar campos");
        }catch(NumberFormatException f){
        JOptionPane.showMessageDialog(null, "Verifique que cada campo este correcto");
-    }                                  
-        
-        
-        
-        
-        
-        
+       }                                  
     }//GEN-LAST:event_jBmodActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
@@ -471,27 +428,21 @@ public class VMascotas extends javax.swing.JInternalFrame {
        cl=(Clientes)jComboCliente.getSelectedItem();
        Mascotas m=new Mascotas();
        m.setAlias(alias);
-       m.setIdCliente(cl.getIdCliente());
-       
-      
+       m.setIdCliente(cl.getIdCliente());    
       m= md.buscarMascota(m.getIdCliente(), m.getAlias());
        String tipo=m.getEspecie();
        String sex=m.getSexo();
        String pelo=m.getPelaje();
        String raza=m.getRaza();
-      
-       
-       
-       
+ 
        switch(sex){
            case "Hembra": jComboSexo.setSelectedIndex(0);
            break;
            case "Macho": jComboSexo.setSelectedIndex(1);
            break;
            default: jComboSexo.setSelectedIndex(-1);
-           break;
-       
-       }
+           break;       
+        }
       
        switch(tipo){
         case "Perro":  jComboTipo.setSelectedIndex(0);
@@ -504,8 +455,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
            default:jComboTipo.setSelectedIndex(-1);
            break;
        }
-             
-        
+                   
         jTextRaza.setText(raza);
         jTextPelo.setText(pelo);
         jDate.setDate(Date.valueOf(m.getFechaNac()));
@@ -514,43 +464,24 @@ public class VMascotas extends javax.swing.JInternalFrame {
        }catch(NullPointerException a){
            if(jTextAlias.getText().equalsIgnoreCase("") || jComboCliente.getSelectedIndex()==-1){
        JOptionPane.showMessageDialog(this, "faltan completar los campos");}
-       }
-        
+       }       
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-        // TODO add your handling code here:
-        
+
             int respuesta = JOptionPane.showOptionDialog(null, "¿Quieres eliminar a la mascota y todos sus tratamientos?", "ADVERTENCIA", 
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Sí", "No"}, "No");
-        
-        if (respuesta == JOptionPane.YES_OPTION) {
-            
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Sí", "No"}, "No");     
+         if (respuesta == JOptionPane.YES_OPTION) {  
              int id=Integer.parseInt(jLabelNumero.getText());
-              
-      
+  
        MascotaData md=new MascotaData();
              
        md.eliminarMascota(id);
             
-        } else if (respuesta == JOptionPane.NO_OPTION) {
-            
-        }
-    
-
-       
-      
-       
-       
-       
-       
-               
-        
-        
-        
+        } else if (respuesta == JOptionPane.NO_OPTION) {           
+        }  
     }//GEN-LAST:event_jBeliminarActionPerformed
-
-    
+  
        class FondoPanel extends JPanel{
         private Image Imagen;
       
@@ -563,10 +494,7 @@ public class VMascotas extends javax.swing.JInternalFrame {
             super.paint(g);
         }
     }
-    
-    
-    
-    
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBeliminar;

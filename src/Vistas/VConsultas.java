@@ -311,11 +311,11 @@ public class VConsultas extends javax.swing.JInternalFrame {
         jLabelPesoA.setForeground(new java.awt.Color(216, 227, 240));
         jLabelPesoA.setText("Peso Actual:");
 
+        jRadio.setForeground(new java.awt.Color(216, 227, 240));
         jRadio.setText("Inactivos");
 
         jBActivar.setBackground(new java.awt.Color(51, 255, 51));
         jBActivar.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jBActivar.setForeground(new java.awt.Color(0, 0, 0));
         jBActivar.setText("Activar");
         jBActivar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

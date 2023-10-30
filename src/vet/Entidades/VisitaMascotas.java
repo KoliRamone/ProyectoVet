@@ -114,7 +114,5 @@ public class VisitaMascotas {
     public String toString() {
         return "VisitaMascotas{" + "idVisita=" + idVisita + ", idMascota=" + idMascota + ", idtrat=" + idtrat + ", fechaVisit=" + fechaVisit + ", peso=" + peso + ", estado=" + estado + ", enfermedad=" + enfermedad + ", descripcion=" + descripcion + '}';
     }
-    
-    
-    
+       
 }

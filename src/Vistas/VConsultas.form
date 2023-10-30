@@ -311,6 +311,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadio">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f0" green="e3" red="d8" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Inactivos"/>
       </Properties>
     </Component>
@@ -321,9 +324,6 @@
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Candara" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Activar"/>
       </Properties>

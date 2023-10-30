@@ -12,16 +12,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-
-
 /**
  *
  * @author Exon
  */
 public class Menu extends javax.swing.JFrame {
-
     FondoPanel fondo = new FondoPanel();
-    
+ 
     public Menu() {
         this.setContentPane(fondo);
         initComponents();
@@ -257,22 +254,15 @@ public class Menu extends javax.swing.JFrame {
         vc.setVisible(true);
         escritorio.add(vc);
         escritorio.moveToFront(vc);
-        vc.move(10, 0);
-     
-            
-           
+        vc.move(10, 0);  
     }//GEN-LAST:event_jBconsultasActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
+
         System.exit(0);
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBruletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBruletaActionPerformed
-     
-        
-
-        
     // Código que se ejecuta cuando se hace clic en el botón
     int numeroGanador = (int) (Math.random() * 9); // Genera un número aleatorio entre 0 y 9
     String mensaje = "El número ganador es:  "  +numeroGanador;
@@ -285,9 +275,6 @@ public class Menu extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jBruletaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -321,12 +308,10 @@ public class Menu extends javax.swing.JFrame {
     }
     
     class FondoPanel extends JPanel{
-        private Image Imagen;
-      
+        private Image Imagen;      
         @Override
         public void paint (Graphics g){
             Image imagen = new ImageIcon(getClass().getResource("/imagen/Fondo1.png")).getImage();
-            
              g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
             setOpaque(false);
             super.paint(g);

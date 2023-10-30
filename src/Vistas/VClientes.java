@@ -442,6 +442,7 @@ public class VClientes extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jTdniKeyTyped
     }
+    
     private void jTbusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTbusquedaKeyTyped
         // TODO add your handling code here:
         if(Character.isLetter(evt.getKeyChar())){
@@ -451,6 +452,7 @@ public class VClientes extends javax.swing.JInternalFrame {
         evt.consume();
     }//GEN-LAST:event_jTbusquedaKeyTyped
     }
+    
     private void jTtelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelefonoKeyTyped
         // TODO add your handling code here:
         if(Character.isLetter(evt.getKeyChar())){
@@ -460,6 +462,7 @@ public class VClientes extends javax.swing.JInternalFrame {
         evt.consume();
     }//GEN-LAST:event_jTtelefonoKeyTyped
     }
+    
     private void jTtelaltKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelaltKeyTyped
         // TODO add your handling code here:
         if(Character.isLetter(evt.getKeyChar())){
@@ -469,12 +472,14 @@ public class VClientes extends javax.swing.JInternalFrame {
         evt.consume();
     }//GEN-LAST:event_jTtelaltKeyTyped
     }
+    
     private void jTnombrealtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombrealtKeyTyped
         // TODO add your handling code here:
         if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
         evt.consume();
     }//GEN-LAST:event_jTnombrealtKeyTyped
     }
+    
     private void jTapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTapellidoKeyTyped
         // TODO add your handling code here:
         if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
@@ -500,10 +505,8 @@ public class VClientes extends javax.swing.JInternalFrame {
             setOpaque(false);
             super.paint(g);
         }
-    }
-   
-    
-
+       }
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButtonBuscar;

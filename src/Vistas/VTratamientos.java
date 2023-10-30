@@ -12,10 +12,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import vet.Acceso.MascotaData;
 import vet.Acceso.TratamientoData;
-import vet.Entidades.Clientes;
-import vet.Entidades.Mascotas;
 import vet.Entidades.Tratamiento;
 
 /**
@@ -270,13 +267,11 @@ FondoPanel fondo = new FondoPanel();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jRadioActionPerformed
 
     private void jBmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodActionPerformed
-        // TODO add your handling code here:
-        
-        
+       
         int id=Integer.parseInt(jLabelID.getText());
         boolean est=jRadio.isSelected();
         String des=jTextDes.getText();
@@ -285,14 +280,9 @@ FondoPanel fondo = new FondoPanel();
         
         Tratamiento trat1=new Tratamiento(id,des,tipo,est, imp);
         
-      
-        
         tratdat.modificarTratamiento(trat1);
         
          cargarCombo();
-        
-        
-        
         
     }//GEN-LAST:event_jBmodActionPerformed
 
@@ -307,14 +297,9 @@ FondoPanel fondo = new FondoPanel();
         }
         if(evt.getKeyChar()==KeyEvent.VK_SPACE){
         evt.consume();
-        
-        
+              
     }//GEN-LAST:event_jTextImporteKeyTyped
-    }
-    
-    
-    
-    
+    }   
     
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
@@ -326,10 +311,7 @@ FondoPanel fondo = new FondoPanel();
         
         listtrata=(ArrayList) tratdat.obtenerTratamientos();
         
-        cargarCombo();
-        
-        
-        
+        cargarCombo();  
         
     }//GEN-LAST:event_jBguardarActionPerformed
 
@@ -418,11 +400,6 @@ FondoPanel fondo = new FondoPanel();
     
     }
     
-    
-    
-    
-    
-    
    class FondoPanel extends JPanel{
         private Image Imagen;
       
@@ -435,17 +412,7 @@ FondoPanel fondo = new FondoPanel();
             super.paint(g);
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBguardar;
