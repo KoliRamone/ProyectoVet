@@ -23,6 +23,7 @@ public class Mascotas {
     private boolean estado;
 
     public Mascotas(int idMascota, String alias, String sexo,String especie, String raza, LocalDate fechaNac, String pelaje, int idCliente, boolean estado) {
+       
         this.idMascota = idMascota;
         this.alias = alias;
         this.sexo = sexo;
@@ -43,6 +44,7 @@ public class Mascotas {
     }
 
     public Mascotas(String alias, String sexo,String especie, String raza, LocalDate fechaNac, String pelaje, int idCliente, boolean estado) {
+      
         this.alias = alias;
         this.sexo = sexo;
         this.raza = raza;

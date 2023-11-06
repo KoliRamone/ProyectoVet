@@ -23,6 +23,7 @@ public class Clientes {
 
     // Documento, Apellido, nombre, dirección, telefono y nombre persona Alt.
     public Clientes(int dni, String apellido, String nombre, String nombreAlt, String dire, int tel, int telAlt, boolean estado) {
+     
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -34,6 +35,7 @@ public class Clientes {
     }
 
     public Clientes(int idCliente, int dni, String apellido, String nombre, String nombreAlt, String dire, int tel, int telAlt,boolean estado) {
+      
         this.idCliente = idCliente;
         this.dni = dni;
         this.apellido = apellido;
@@ -46,26 +48,37 @@ public class Clientes {
     }
 
     public Clientes() {
+        
     }
 
     public int getIdCliente() {
+        
         return idCliente;
+        
     }
 
     public void setIdCliente(int idCliente) {
+        
         this.idCliente = idCliente;
+        
     }
 
     public int getDni() {
+        
         return dni;
+        
     }
 
     public void setDni(int dni) {
+        
         this.dni = dni;
+        
     }
 
     public String getApellido() {
+        
         return apellido;
+        
     }
 
     public void setApellido(String apellido) {
