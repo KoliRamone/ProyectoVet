@@ -24,6 +24,7 @@ import vet.Entidades.*;
 public class VConsultas extends javax.swing.JInternalFrame {
 
     private DefaultTableModel tabla;
+   
     private ClienteData cd;
     private MascotaData md;
     private TratamientoData td;
@@ -39,29 +40,34 @@ public class VConsultas extends javax.swing.JInternalFrame {
     private ArrayList<VisitaMascotas> avm=new ArrayList<>();
     private ArrayList<Tratamiento> atrat=new ArrayList<>();
     private ArrayList<Tratamiento> atratfija=new ArrayList<>();
+    
     FondoPanel fondo = new FondoPanel();
     
     
     
     public VConsultas() {
+        
         tabla=new DefaultTableModel();
+        
         cd=new ClienteData();
         md=new MascotaData();
         td=new TratamientoData();
         vd=new VisitaData();
+        
         this.setContentPane(fondo);
         initComponents();
         armarCabeceraCL();
         cargarCombo();
-          jLabelTrat.setText("Seleccione un Tratamiento");
-          jBActivar.setVisible(false);
+       
+        jLabelTrat.setText("Seleccione un Tratamiento");
+        jBActivar.setVisible(false);
     }
  private void cargarCombo(){
    
          jComboT.removeAllItems();
-     atratfija=(ArrayList) td.obtenerTratamientos();
-    for(Tratamiento t:atratfija){
-    jComboT.addItem(t);
+         atratfija=(ArrayList) td.obtenerTratamientos();
+         for(Tratamiento t:atratfija){
+         jComboT.addItem(t);
     
     }
         jComboT.setSelectedIndex(-1);
@@ -70,48 +76,53 @@ public class VConsultas extends javax.swing.JInternalFrame {
     }
     
      private void armarCabeceraCL(){
-     cleanFilaTabla();
-    ArrayList<Object> filacabecera=new ArrayList<>();
-    filacabecera.add("ID");
-    filacabecera.add("DNI");
-    filacabecera.add("Apellido");
-    filacabecera.add("Nombre");
-    filacabecera.add("Dirección");
-    filacabecera.add("Teléfono");
-    filacabecera.add("Contacto Alternativo");
-    filacabecera.add("Teléfono Alt");
+      
+         cleanFilaTabla();
+         
+         ArrayList<Object> filacabecera=new ArrayList<>();
+       
+         filacabecera.add("ID");
+         filacabecera.add("DNI");
+         filacabecera.add("Apellido");
+         filacabecera.add("Nombre");
+         filacabecera.add("Dirección");
+         filacabecera.add("Teléfono");
+         filacabecera.add("Contacto Alternativo");
+         filacabecera.add("Teléfono Alt");
     
     
-    for(Object it:filacabecera){
-    tabla.addColumn(it);
+          for(Object it:filacabecera){
+          tabla.addColumn(it);
     
     
-    }
-    jTabla.setModel(tabla);
+           }
+          jTabla.setModel(tabla);
     
    
    
    }
     
       private void armarCabeceraMA(){
-   cleanFilaTabla();
-    ArrayList<Object> filacabecera=new ArrayList<>();
-    filacabecera.add("ID");
-    filacabecera.add("Alias");
-    filacabecera.add("Sexo");
-    filacabecera.add("Especie");
-    filacabecera.add("Raza");
-    filacabecera.add("Pelaje");
-    filacabecera.add("Fecha de Nacimiento");
-    filacabecera.add("CLiente");
+         cleanFilaTabla();
+         
+         ArrayList<Object> filacabecera=new ArrayList<>();
+    
+         filacabecera.add("ID");
+         filacabecera.add("Alias");
+         filacabecera.add("Sexo");
+         filacabecera.add("Especie");
+         filacabecera.add("Raza");
+         filacabecera.add("Pelaje");
+         filacabecera.add("Fecha de Nacimiento");
+         filacabecera.add("CLiente");
     
     
-    for(Object it:filacabecera){
-    tabla.addColumn(it);
+          for(Object it:filacabecera){
+          tabla.addColumn(it);
     
     
-    }
-    jTabla.setModel(tabla);
+           }
+          jTabla.setModel(tabla);
     
    
    
@@ -119,55 +130,63 @@ public class VConsultas extends javax.swing.JInternalFrame {
       
       
        private void armarCabeceraVI(){
-   cleanFilaTabla();
-    ArrayList<Object> filacabecera=new ArrayList<>();
-    filacabecera.add("ID");
-    filacabecera.add("Mascota");
-    filacabecera.add("Fecha de visita");
-    filacabecera.add("Peso");
-    filacabecera.add("Descripción");
-    filacabecera.add("Tratamiento");
-    filacabecera.add("Enfermedad");
+           
+         cleanFilaTabla();
+   
+         ArrayList<Object> filacabecera=new ArrayList<>();
+    
+         filacabecera.add("ID");
+         filacabecera.add("Mascota");
+         filacabecera.add("Fecha de visita");
+         filacabecera.add("Peso");
+         filacabecera.add("Descripción");
+         filacabecera.add("Tratamiento");
+         filacabecera.add("Enfermedad");
     
     
     
-    for(Object it:filacabecera){
-    tabla.addColumn(it);
+         for(Object it:filacabecera){
+         tabla.addColumn(it);
     
     
-    }
-    jTabla.setModel(tabla);
+         }
+         jTabla.setModel(tabla);
     
    
    
    }
     
        private void cleanFilaTabla(){
-      tabla.setColumnCount(0);
-      int indice=tabla.getRowCount()-1;
+           
+          tabla.setColumnCount(0);
+       
+          int indice=tabla.getRowCount()-1;
       
-      for (int i=indice;i>=0;i--){
+          for (int i=indice;i>=0;i--){
       
-      tabla.removeRow(i);
-      }
+          tabla.removeRow(i);
+           }
         
     }
         private void armarCabeceraTRA(){
-        cleanFilaTabla();
-    ArrayList<Object> filacabecera=new ArrayList<>();
-    filacabecera.add("ID");
-    filacabecera.add("Tipo de tratamiento");
-    filacabecera.add("Descripción");
-    filacabecera.add("Importe");
+            
+          cleanFilaTabla();
+        
+          ArrayList<Object> filacabecera=new ArrayList<>();
+    
+         filacabecera.add("ID");
+         filacabecera.add("Tipo de tratamiento");
+         filacabecera.add("Descripción");
+         filacabecera.add("Importe");
    
     
     
-    for(Object it:filacabecera){
-    tabla.addColumn(it);
+          for(Object it:filacabecera){
+          tabla.addColumn(it);
     
     
-    }
-    jTabla.setModel(tabla);
+           }
+          jTabla.setModel(tabla);
     
    
    
@@ -415,97 +434,125 @@ public class VConsultas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-this.dispose();        // TODO add your handling code here:
+this.dispose();        
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBclientesActionPerformed
+      
         jTextIDM.setText("");
+        
         cleanFilaTabla();
         armarCabeceraCL();
+        
         jBActivar.setVisible(false);
+        
         try{ 
-        int id=Integer.parseInt(jTextIDCliente.getText());
-        cl=new Clientes();
-       
-        
-        
-            cl=cd.buscarCliente(id);
-        tabla.addRow(new Object[] {cl.getIdCliente(),cl.getDni(),cl.getApellido(),cl.getNombre(),cl.getDire(),cl.getTel(),cl.getNombreAlt(),cl.getTelAlt()});
-             jLabelTrat.setText("Cliente "+cl.getNombre());
-              jTextIDM.setText("");
+             int id=Integer.parseInt(jTextIDCliente.getText());
+             cl=new Clientes();
+              
+             cl=cd.buscarCliente(id);
+            
+             tabla.addRow(new Object[] {cl.getIdCliente(),cl.getDni(),cl.getApellido(),cl.getNombre(),cl.getDire(),cl.getTel(),cl.getNombreAlt(),cl.getTelAlt()});
+                jLabelTrat.setText("Cliente "+cl.getNombre());
+                jTextIDM.setText("");
                 jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-        }catch(NumberFormatException n){
-         acl=(ArrayList) cd.listarClientes();
-         jLabelTrat.setText("Lista de Clientes");
-          jTextIDM.setText("");
-            jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-         for(Clientes c: acl){
-           tabla.addRow(new Object [] {c.getIdCliente(), c.getDni(), c.getApellido(),c.getNombre(),c.getDire(),c.getTel(),c.getNombreAlt(),c.getTelAlt()});
-       }
-       }catch(NullPointerException nu){
-         acl=(ArrayList) cd.listarClientes();
-         jLabelTrat.setText("Lista de Clientes");
-          jTextIDM.setText("");
-            jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-         for(Clientes c: acl){
-           tabla.addRow(new Object [] {c.getIdCliente(), c.getDni(), c.getApellido(),c.getNombre(),c.getDire(),c.getTel(),c.getNombreAlt(),c.getTelAlt()});
-       }
+                jLabelPesoA.setText("Peso Actual: ");
+                
+            }catch(NumberFormatException n){
+                
+                  acl=(ArrayList) cd.listarClientes();
+                  
+                  jLabelTrat.setText("Lista de Clientes");
+                  jTextIDM.setText("");
+                  jLabelPeso.setText("Peso Promedio: ");
+                  jLabelPesoA.setText("Peso Actual: ");
+                  
+                  for(Clientes c: acl){
+                  tabla.addRow(new Object [] {c.getIdCliente(), c.getDni(), c.getApellido(),c.getNombre(),c.getDire(),c.getTel(),c.getNombreAlt(),c.getTelAlt()});
+                  }
+                  
+            }catch(NullPointerException nu){
+                
+                 acl=(ArrayList) cd.listarClientes();
+                 jLabelTrat.setText("Lista de Clientes");
+                 jTextIDM.setText("");
+                 jLabelPeso.setText("Peso Promedio: ");
+                 jLabelPesoA.setText("Peso Actual: ");
+                 
+                 for(Clientes c: acl){
+                 tabla.addRow(new Object [] {c.getIdCliente(), c.getDni(), c.getApellido(),c.getNombre(),c.getDire(),c.getTel(),c.getNombreAlt(),c.getTelAlt()});
+                 }
     
        } 
         
     }//GEN-LAST:event_jBclientesActionPerformed
 
     private void jBmascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmascotasActionPerformed
-        jTextIDM.setText("");
-        cleanFilaTabla();
-        armarCabeceraMA();
-        jBActivar.setVisible(false);
+       
+                jTextIDM.setText("");
+                
+                cleanFilaTabla();
+                armarCabeceraMA();
+                
+                jBActivar.setVisible(false);
+                
          try{ 
-        int id=Integer.parseInt(jTextIDCliente.getText());
+               int id=Integer.parseInt(jTextIDCliente.getText());
          
-        
-               
-        am=(ArrayList) md.listarMascotasPorCliente(id);
+               am=(ArrayList) md.listarMascotasPorCliente(id);
              
-             boolean b = am.isEmpty();  // comprobar que el objeto este vacio
-        if(b==false){
-         for(Mascotas mas: am){
-            tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
-            cl=new Clientes();
-            cl=cd.buscarCliente(id);
-            jLabelTrat.setText("Mascotas de "+cl.getNombre());
-              jTextIDM.setText("");
-                jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-         }
-        }else{  am=(ArrayList) md.listarMascotas();
-        jLabelTrat.setText("Lista de Mascotas");
-         jTextIDM.setText("");
-           jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-        for(Mascotas mas: am){
-            tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
-        }}
-         }catch(NullPointerException | NumberFormatException nu){
-          am=(ArrayList) md.listarMascotas();
-           jLabelTrat.setText("Lista de Mascotas");
-            jTextIDM.setText("");
-              jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-         for(Mascotas mas: am){
-            tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
-        }
+               boolean b = am.isEmpty();  // comprobar que el objeto este vacio
+               
+               if(b==false){
+                for(Mascotas mas: am){
+                 tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
+                  cl=new Clientes();
+                    cl=cd.buscarCliente(id);
+                    
+                      jLabelTrat.setText("Mascotas de "+cl.getNombre());
+                      jTextIDM.setText("");
+                      jLabelPeso.setText("Peso Promedio: ");
+                      jLabelPesoA.setText("Peso Actual: ");
+                                     }
+                
+                           }else{ 
+                   
+                                am=(ArrayList) md.listarMascotas();
+                                
+                                jLabelTrat.setText("Lista de Mascotas");
+                                jTextIDM.setText("");
+                                jLabelPeso.setText("Peso Promedio: ");
+                                jLabelPesoA.setText("Peso Actual: ");
+                                 
+                             for(Mascotas mas: am){
+                                 
+                                tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
+                                                 }}
+               
+            }catch(NullPointerException | NumberFormatException nu){
+                
+                           am=(ArrayList) md.listarMascotas();
+                           
+                           jLabelTrat.setText("Lista de Mascotas");
+                           jTextIDM.setText("");
+                           jLabelPeso.setText("Peso Promedio: ");
+                           jLabelPesoA.setText("Peso Actual: ");
+                           
+                             for(Mascotas mas: am){
+                                 
+                                 tabla.addRow(new Object [] {mas.getIdMascota(), mas.getAlias(), mas.getSexo(),mas.getEspecie(),mas.getRaza(),mas.getPelaje(),mas.getFechaNac(),mas.getIdCliente()});
+                                                  }
          
-         }
+                                                                   }
     }//GEN-LAST:event_jBmascotasActionPerformed
 
     private void jBvisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBvisitasActionPerformed
-         cleanFilaTabla();
-        armarCabeceraVI();
-         jBActivar.setVisible(false);
+        
+                cleanFilaTabla();
+                armarCabeceraVI();
+                
+                jBActivar.setVisible(false);
+                
         if(!jTextIDM.getText().equalsIgnoreCase("") && jComboT.getSelectedIndex()!=-1){
        
              t=new Tratamiento();
@@ -513,57 +560,77 @@ this.dispose();        // TODO add your handling code here:
              int id=Integer.parseInt(jTextIDM.getText());
             
              if(jComboT.getSelectedIndex()==-1){
+                 
               jLabelTrat.setText("Seleccione un Tratamiento Para Buscar");
-             }else{ jLabelTrat.setText(t.getTipoTrat());}
+              
+                 }else{ jLabelTrat.setText(t.getTipoTrat());}
          
               avm=(ArrayList) vd.listarVisitasPorMascotas(id,t.getIdTrat());
+              
               boolean b=avm.isEmpty();
+              
               jLabelPeso.setText("Peso Promedio: "+vd.listarPromedioPeso(Integer.parseInt(jTextIDM.getText()))+" "+"KG");
               jLabelPesoA.setText("Peso Actual: "+String.valueOf(vd.listarPesoActual(Integer.parseInt(jTextIDM.getText())))+" KG");
         
-               jTextIDM.setText("");
-                jComboT.setSelectedIndex(-1); 
+              jTextIDM.setText("");
+              jComboT.setSelectedIndex(-1); 
+              
          if(b==false){
+             
               jTextIDM.setText("");
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }
-         }else{
-              jTextIDM.setText("");
-          avm=(ArrayList) vd.listarVisitas();
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }}
+              
+                 for(VisitaMascotas visit: avm){
+                    tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                                               }
+                     }else{
+             
+                           jTextIDM.setText("");
+                           
+                           avm=(ArrayList) vd.listarVisitas();
+                           
+                              for(VisitaMascotas visit: avm){
+                                  tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                                                           }}
          
          
          
-         }else if(jTextIDM.getText().equalsIgnoreCase("") && jComboT.getSelectedIndex()!=-1){
-          t=new Tratamiento();
-          t=(Tratamiento) jComboT.getSelectedItem();
-          avm=(ArrayList) vd.listarVisitasPorTrat(t.getIdTrat());
-          boolean b=avm.isEmpty();
-          if(jComboT.getSelectedIndex()==-1){
-              jLabelTrat.setText("Seleccione un Tratamiento");
-               jTextIDM.setText("");
-             }else{ jLabelTrat.setText(t.getTipoTrat());}
-          jComboT.setSelectedIndex(-1);
+                     }else if(jTextIDM.getText().equalsIgnoreCase("") && jComboT.getSelectedIndex()!=-1){
+                         
+                            t=new Tratamiento();
+                            t=(Tratamiento) jComboT.getSelectedItem();
+                            avm=(ArrayList) vd.listarVisitasPorTrat(t.getIdTrat());
+          
+                            boolean b=avm.isEmpty();
+                             
+                                 if(jComboT.getSelectedIndex()==-1){
+                                     
+                                    jLabelTrat.setText("Seleccione un Tratamiento");
+                                    jTextIDM.setText("");
+                                    
+                                    }else{ jLabelTrat.setText(t.getTipoTrat());}
+                                 
+                                          jComboT.setSelectedIndex(-1);
+                                          
           if(b==false){
+              
               jTextIDM.setText("");
               jLabelPeso.setText("Peso Promedio: ");
               jLabelPesoA.setText("Peso Actual: ");
         
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }
+                 for(VisitaMascotas visit: avm){
+                     tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                                                }
          }else{
-               jTextIDM.setText("");
-                jLabelPeso.setText("Peso Promedio: ");
+              
+              jTextIDM.setText("");
+              jLabelPeso.setText("Peso Promedio: ");
               jLabelPesoA.setText("Peso Actual: ");
         
-          avm=(ArrayList) vd.listarVisitas();
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }}
+              avm=(ArrayList) vd.listarVisitas();
+              
+                 for(VisitaMascotas visit: avm){
+                   tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                                               }}
           
           
           
@@ -574,59 +641,77 @@ this.dispose();        // TODO add your handling code here:
           avm=(ArrayList) vd.listarVisitasPorMascotas2(Integer.parseInt(jTextIDM.getText()));
           m=new Mascotas();
           m= md.buscarMascota(Integer.parseInt(jTextIDM.getText()));
+          
           boolean b=avm.isEmpty();
+          
          jLabelPeso.setText("Peso Promedio: "+vd.listarPromedioPeso(Integer.parseInt(jTextIDM.getText()))+" "+"KG");
          jLabelPesoA.setText("Peso Actual: "+String.valueOf(vd.listarPesoActual(Integer.parseInt(jTextIDM.getText())))+" KG");
+        
          if(jComboT.getSelectedIndex()==-1){
-            //   jTextIDM.setText("");
+           
              }else{ jLabelTrat.setText(t.getTipoTrat());}
-         jComboT.setSelectedIndex(-1);
+                  jComboT.setSelectedIndex(-1);
                  
          if(b==false){
               
-             jLabelTrat.setText("Visitas de "+m.getAlias());
+              jLabelTrat.setText("Visitas de "+m.getAlias());
               jLabelPeso.setText("Peso Promedio: "+vd.listarPromedioPeso(Integer.parseInt(jTextIDM.getText()))+" "+"KG");
-         jLabelPesoA.setText("Peso Actual: "+String.valueOf(vd.listarPesoActual(Integer.parseInt(jTextIDM.getText())))+" KG");
-        jTextIDM.setText("");
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }
+              jLabelPesoA.setText("Peso Actual: "+String.valueOf(vd.listarPesoActual(Integer.parseInt(jTextIDM.getText())))+" KG");
+              jTextIDM.setText("");
+              
+                   for(VisitaMascotas visit: avm){
+                      tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                                                 }
          }else{
              
                 jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-          avm=(ArrayList) vd.listarVisitas();
-           jTextIDM.setText("");
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                jLabelPesoA.setText("Peso Actual: ");
+                
+                avm=(ArrayList) vd.listarVisitas();
+                
+                jTextIDM.setText("");
+                
+                    for(VisitaMascotas visit: avm){
+                       tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
        
-          }
-                 }
+                                                  }
+               }
              
              
     
         
                  }else{
-               jTextIDM.setText("");
-           avm=(ArrayList) vd.listarVisitas();
-         boolean b=avm.isEmpty();
-         if(jComboT.getSelectedIndex()==-1){
-              jLabelTrat.setText("Seleccione un Tratamiento");
+              
+                     jTextIDM.setText("");
+                     
+                     avm=(ArrayList) vd.listarVisitas();
+                     boolean b=avm.isEmpty();
+                     
+                     if(jComboT.getSelectedIndex()==-1){
+                         
+                      jLabelTrat.setText("Seleccione un Tratamiento");
+                      
              }else{ jLabelTrat.setText(t.getTipoTrat());}
-              jComboT.setSelectedIndex(-1);   
+                     
+                   jComboT.setSelectedIndex(-1);   
          if(b==false){
+             
               jTextIDM.setText("");
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }
+              
+                for(VisitaMascotas visit: avm){
+                   tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                                              }
          }else{
-              jTextIDM.setText("");
-                jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-          avm=(ArrayList) vd.listarVisitas();
-          for(VisitaMascotas visit: avm){
-            tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
-        }
+             
+               jTextIDM.setText("");
+               jLabelPeso.setText("Peso Promedio: ");
+               jLabelPesoA.setText("Peso Actual: ");
+               
+               avm=(ArrayList) vd.listarVisitas();
+               
+                 for(VisitaMascotas visit: avm){
+                     tabla.addRow(new Object [] {visit.getIdVisita(),visit.getIdMascota(),visit.getFechaVisit(),visit.getPeso(),visit.getDescripcion(),visit.getIdtrat(),visit.isEnfermedad()});
+                                                }
                  }
           
           
@@ -637,37 +722,43 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBvisitasActionPerformed
 
     private void jBtratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtratActionPerformed
-        jTextIDM.setText("");       
+       
+        jTextIDM.setText("");  
+        
         cleanFilaTabla();
         armarCabeceraTRA();
         
         if(jRadio.isSelected()){
               
-          jBActivar.setVisible(true);     
+         jBActivar.setVisible(true);     
          atrat=(ArrayList) td.obtenerTratamientosInactivos();
+         
          jLabelTrat.setText("Tratamientos Inactivos");
          jLabelPeso.setText("Peso Promedio: ");
          jLabelPesoA.setText("Peso Actual: ");
-          for(Tratamiento tt: atrat){
-            tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
+         
+              for(Tratamiento tt: atrat){
+                 tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
         
-          }
+                                         }
         }else{
           
-       jBActivar.setVisible(false);
-        atrat=(ArrayList) td.obtenerTratamientos();
-         jLabelTrat.setText("Tratamientos activos");
-           jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-         for(Tratamiento tt: atrat){
-            tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
-        }
+            jBActivar.setVisible(false);
+            atrat=(ArrayList) td.obtenerTratamientos();
+            
+             jLabelTrat.setText("Tratamientos activos");
+             jLabelPeso.setText("Peso Promedio: ");
+             jLabelPesoA.setText("Peso Actual: ");
+              
+                 for(Tratamiento tt: atrat){
+                    tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
+                                           }
         }
         
     }//GEN-LAST:event_jBtratActionPerformed
 
     private void jTextIDClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextIDClienteKeyTyped
-        // TODO add your handling code here:
+        
         if(Character.isLetter(evt.getKeyChar())){
         evt.consume();
         }
@@ -676,7 +767,7 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jTextIDClienteKeyTyped
     }
     private void jTextIDMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextIDMKeyTyped
-        // TODO add your handling code here:
+       
          if(Character.isLetter(evt.getKeyChar())){
         evt.consume();
         }
@@ -685,7 +776,7 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jTextIDMKeyTyped
     }
     private void jTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMouseClicked
-        // TODO add your handling code here:
+     
         
        
         
@@ -693,39 +784,44 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jTablaMouseClicked
 
     private void jBActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActivarActionPerformed
-        // TODO add your handling code here:
+       
         t=new Tratamiento();
         
-         int filaselect=jTabla.getSelectedRow();
+        int filaselect=jTabla.getSelectedRow();
         if(filaselect!=-1){
-           
-            
            
         Object miObjeto = jTabla.getValueAt(filaselect,0);  //crear objeto vacio , darle valor
         int miEntero = (Integer) miObjeto;
+        
           t.setIdTrat(miEntero);
           td.ActivarTratamiento(t);
-         jTextIDM.setText("");       
-        cleanFilaTabla();
-        armarCabeceraTRA();
+         
+          jTextIDM.setText("");       
+        
+          cleanFilaTabla();
+          armarCabeceraTRA();
         
         if(jRadio.isSelected()){
-         atrat=(ArrayList) td.obtenerTratamientosInactivos();
-         jLabelTrat.setText("Tratamientos Inactivos");
-         jLabelPeso.setText("Peso Promedio: ");
-         jLabelPesoA.setText("Peso Actual: ");
-          for(Tratamiento tt: atrat){
-            tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
-        }
+             atrat=(ArrayList) td.obtenerTratamientosInactivos();
+             
+              jLabelTrat.setText("Tratamientos Inactivos");
+              jLabelPeso.setText("Peso Promedio: ");
+              jLabelPesoA.setText("Peso Actual: ");
+              
+                for(Tratamiento tt: atrat){
+                   tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
+                                           }
         }else{
         
-        atrat=(ArrayList) td.obtenerTratamientos();
-         jLabelTrat.setText("Tratamientos activos");
-           jLabelPeso.setText("Peso Promedio: ");
-              jLabelPesoA.setText("Peso Actual: ");
-         for(Tratamiento tt: atrat){
-            tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
-        }
+            atrat=(ArrayList) td.obtenerTratamientos();
+        
+            jLabelTrat.setText("Tratamientos activos");
+            jLabelPeso.setText("Peso Promedio: ");
+            jLabelPesoA.setText("Peso Actual: ");
+            
+                for(Tratamiento tt: atrat){
+                  tabla.addRow(new Object [] {tt.getIdTrat(),tt.getTipoTrat(),tt.getDescripcion(),tt.getImporte()});
+                                           }
         }
         
            

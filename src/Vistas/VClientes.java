@@ -11,8 +11,8 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import vet.Acceso.*;
-import vet.Entidades.*;
+import vet.Acceso.ClienteData;
+import vet.Entidades.Clientes;
 
 /**
  *
@@ -359,74 +359,82 @@ public class VClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+         
         int dni = Integer.parseInt( jTbusqueda.getText());
-        ClienteData cd = new ClienteData();
-        
-        Clientes cl= new Clientes();
-        cl=cd.buscarClientePorDni(dni);
-        jTdni.setText(Integer.toString(cl.getDni()));
-        jTapellido.setText(cl.getApellido());
-        jTnombre.setText(cl.getNombre());
-        jTnombrealt.setText(cl.getNombreAlt());
+       
+         ClienteData cd = new ClienteData();
+         Clientes cl= new Clientes();
+         cl=cd.buscarClientePorDni(dni);
+         
+         jTdni.setText(Integer.toString(cl.getDni()));
+         jTapellido.setText(cl.getApellido());
+         jTnombre.setText(cl.getNombre());
+         jTnombrealt.setText(cl.getNombreAlt());
          jTdireccion.setText(cl.getDire());
          jTtelefono.setText(Integer.toString(cl.getTel()));
          jTtelalt.setText(Integer.toString(cl.getTelAlt()));
-        jidNum.setText(Integer.toString(cl.getIdCliente()));
-        jestado.setSelected(cl.isEstado());
+         jidNum.setText(Integer.toString(cl.getIdCliente()));
+         jestado.setSelected(cl.isEstado());
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
-        jTdni.setText("");
-        jTapellido.setText("");
-        jTnombre.setText("");
-        jTnombrealt.setText("");
+         jTdni.setText("");
+         jTapellido.setText("");
+         jTnombre.setText("");
+         jTnombrealt.setText("");
          jTdireccion.setText("");
          jTtelefono.setText("");
          jTtelalt.setText("");
-        jidNum.setText("");
-        jTbusqueda.setText("");
+         jidNum.setText("");
+         jTbusqueda.setText("");
          jestado.setSelected(false);
     }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
 
            try{
-       int dni=Integer.parseInt(jTdni.getText());
-       String apellido=jTapellido.getText();
-       String nombre=jTnombre.getText();
-       String nombreAlt=jTnombrealt.getText();
-       String dire=jTdireccion.getText();
-       int tel=Integer.parseInt(jTtelefono.getText());
-       int telAlt=Integer.parseInt(jTtelalt.getText());
-       boolean estado=true;
+                boolean estado=true;
+                int dni=Integer.parseInt(jTdni.getText());
+                int tel=Integer.parseInt(jTtelefono.getText());
+                int telAlt=Integer.parseInt(jTtelalt.getText());
+                String apellido=jTapellido.getText();
+                String nombre=jTnombre.getText();
+                String nombreAlt=jTnombrealt.getText();
+                String dire=jTdireccion.getText();
+                
        
-       Clientes cl= new Clientes(dni,apellido,nombre,nombreAlt,dire,tel,telAlt,estado);
-       ClienteData cd= new ClienteData();
-       
-       cd.guardarCliente(cl);
-       }catch(NullPointerException d){
-       JOptionPane.showMessageDialog(null, "Faltan completar campos");
-       }catch(NumberFormatException f){
-       JOptionPane.showMessageDialog(null, "Verifique que cada campo este correcto");
+                Clientes cl= new Clientes(dni,apellido,nombre,nombreAlt,dire,tel,telAlt,estado);
+                ClienteData cd= new ClienteData();
+                
+                cd.guardarCliente(cl);
+                
+              }catch(NullPointerException d){
+                    JOptionPane.showMessageDialog(null, "Faltan completar campos");
+              }catch(NumberFormatException f){
+                    JOptionPane.showMessageDialog(null, "Verifique que cada campo este correcto");
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     }       
     
     private void jButtonModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModActionPerformed
-       ClienteData cd= new ClienteData();
-
+       
+        
+       boolean estado=jestado.isSelected(); 
        int dni=Integer.parseInt(jTdni.getText());
+       int tel=Integer.parseInt(jTtelefono.getText());
+       int telAlt=Integer.parseInt(jTtelalt.getText());
+       int id=Integer.parseInt(jidNum.getText());
        String apellido=jTapellido.getText();
        String nombre=jTnombre.getText();
        String nombreAlt=jTnombrealt.getText();
        String dire=jTdireccion.getText();
-       int tel=Integer.parseInt(jTtelefono.getText());
-       int telAlt=Integer.parseInt(jTtelalt.getText());
-       boolean estado=jestado.isSelected(); 
-       int id=Integer.parseInt(jidNum.getText());
+     
+       
+       ClienteData cd= new ClienteData();
        Clientes cl=new Clientes(id,dni,apellido,nombre,nombreAlt,dire,tel,telAlt,estado);
               
        cd.modificarCliente(cl);
+       
     }//GEN-LAST:event_jButtonModActionPerformed
 
     private void jestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jestadoActionPerformed
@@ -434,7 +442,8 @@ public class VClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jestadoActionPerformed
 
     private void jTdniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdniKeyTyped
-       if(Character.isLetter(evt.getKeyChar())){
+       
+        if(Character.isLetter(evt.getKeyChar())){
         evt.consume();
         }
         if(evt.getKeyChar()==KeyEvent.VK_SPACE){
@@ -444,7 +453,7 @@ public class VClientes extends javax.swing.JInternalFrame {
     }
     
     private void jTbusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTbusquedaKeyTyped
-        // TODO add your handling code here:
+      
         if(Character.isLetter(evt.getKeyChar())){
         evt.consume();
         }
@@ -454,7 +463,7 @@ public class VClientes extends javax.swing.JInternalFrame {
     }
     
     private void jTtelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelefonoKeyTyped
-        // TODO add your handling code here:
+       
         if(Character.isLetter(evt.getKeyChar())){
         evt.consume();
         }
@@ -464,7 +473,7 @@ public class VClientes extends javax.swing.JInternalFrame {
     }
     
     private void jTtelaltKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelaltKeyTyped
-        // TODO add your handling code here:
+      
         if(Character.isLetter(evt.getKeyChar())){
         evt.consume();
         }
@@ -474,21 +483,21 @@ public class VClientes extends javax.swing.JInternalFrame {
     }
     
     private void jTnombrealtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombrealtKeyTyped
-        // TODO add your handling code here:
+       
         if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
         evt.consume();
     }//GEN-LAST:event_jTnombrealtKeyTyped
     }
     
     private void jTapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTapellidoKeyTyped
-        // TODO add your handling code here:
+      
         if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
         evt.consume();
     }//GEN-LAST:event_jTapellidoKeyTyped
     }
     
     private void jTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyTyped
-        // TODO add your handling code here:
+      
         if(!(Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()==KeyEvent.VK_SPACE)){
         evt.consume();
     }//GEN-LAST:event_jTnombreKeyTyped

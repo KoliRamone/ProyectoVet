@@ -27,16 +27,19 @@ import vet.Entidades.Mascotas;
 public class VMascotas extends javax.swing.JInternalFrame {
 
     private ArrayList<Clientes> cl =new ArrayList<>();
+    
     private MascotaData md=new MascotaData();
     private ClienteData cld=new ClienteData();
+    
     FondoPanel fondo = new FondoPanel();
  
     public VMascotas() {
+        
         this.setContentPane(fondo);
+        
         initComponents();
+        
         cl=(ArrayList) cld.listarClientes();
-        
-        
         
         cargarCombo(cl);
     }
@@ -44,13 +47,15 @@ public class VMascotas extends javax.swing.JInternalFrame {
      private void cargarCombo(ArrayList<Clientes> b){
    
     
-    for(Clientes cl:b){
-    jComboCliente.addItem(cl);
+              for(Clientes cl:b){
+                  
+              jComboCliente.addItem(cl);
     
-    }
-        jComboTipo.setSelectedIndex(-1);
-        jComboSexo.setSelectedIndex(-1);
-         jComboCliente.setSelectedIndex(-1);
+                                }
+              
+              jComboTipo.setSelectedIndex(-1);
+              jComboSexo.setSelectedIndex(-1);
+              jComboCliente.setSelectedIndex(-1);
     
     }
    
@@ -330,33 +335,40 @@ public class VMascotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jTextAliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextAliasActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextAliasActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        // TODO add your handling code here:
-  try{
-       String alias=jTextAlias.getText();
-       String raza=jTextRaza.getText();
-       String tipo=String.valueOf(jComboTipo.getSelectedItem());
-       String sexo=String.valueOf(jComboSexo.getSelectedItem());
-       String pelo=jTextPelo.getText();
-       LocalDate fecha=jDate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-   
-       Clientes cl= new Clientes();
-       MascotaData md=new MascotaData();
-       cl=(Clientes)jComboCliente.getSelectedItem();
-       Mascotas m=new Mascotas(alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
-       md.guardarMascota(m);
-       m=md.buscarMascota(cl.getIdCliente(), alias);
        
-       jLabelNumero.setText(String.valueOf(m.getIdMascota()));
+        try{
+              String alias=jTextAlias.getText();
+              String raza=jTextRaza.getText();
+              String tipo=String.valueOf(jComboTipo.getSelectedItem());
+              String sexo=String.valueOf(jComboSexo.getSelectedItem());
+              String pelo=jTextPelo.getText();
+               
+              LocalDate fecha=jDate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+   
+              Clientes cl= new Clientes();
+              MascotaData md=new MascotaData();
+              
+              cl=(Clientes)jComboCliente.getSelectedItem();
+              
+              Mascotas m=new Mascotas(alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
+     
+              md.guardarMascota(m);
+              m=md.buscarMascota(cl.getIdCliente(), alias);
+       
+              jLabelNumero.setText(String.valueOf(m.getIdMascota()));
 
-       }catch(NullPointerException d){
-       JOptionPane.showMessageDialog(null, "Faltan completar campos");
-       }catch(NumberFormatException f){
-       JOptionPane.showMessageDialog(null, "Verifique que cada campo este correcto");
-       }                                   
+            }catch(NullPointerException d){
+                
+               JOptionPane.showMessageDialog(null, "Faltan completar campos");
+               
+            }catch(NumberFormatException f){
+                
+               JOptionPane.showMessageDialog(null, "Verifique que cada campo este correcto");
+                                           }                                   
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jTextAliasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAliasKeyTyped
@@ -374,19 +386,19 @@ public class VMascotas extends javax.swing.JInternalFrame {
     }
     
     private void jComboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboClienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboClienteActionPerformed
 
     private void jBnewMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnewMascotaActionPerformed
         
-        jComboTipo.setSelectedIndex(-1);
-        jComboSexo.setSelectedIndex(-1);
+         jComboTipo.setSelectedIndex(-1);
+         jComboSexo.setSelectedIndex(-1);
          jComboCliente.setSelectedIndex(-1);
-        jTextAlias.setText("");       
-        jTextRaza.setText("");       
-        jTextPelo.setText("");        
-        jLabelNumero.setText("");
-        jDate.setDate(null);      
+         jTextAlias.setText("");       
+         jTextRaza.setText("");       
+         jTextPelo.setText("");        
+         jLabelNumero.setText("");
+         jDate.setDate(null);      
     }//GEN-LAST:event_jBnewMascotaActionPerformed
 
     private void jTextPeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPeloKeyTyped
@@ -399,87 +411,116 @@ public class VMascotas extends javax.swing.JInternalFrame {
     private void jBmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodActionPerformed
        
                try{       
-       String alias=jTextAlias.getText();
-       String raza=jTextRaza.getText();
-       String tipo=String.valueOf(jComboTipo.getSelectedItem());
-       String sexo=String.valueOf(jComboSexo.getSelectedItem());
-       String pelo=jTextPelo.getText();
-       LocalDate fecha=jDate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-       int id=Integer.parseInt(jLabelNumero.getText());
+                    String alias=jTextAlias.getText();
+                    String raza=jTextRaza.getText();
+                    String tipo=String.valueOf(jComboTipo.getSelectedItem());
+                    String sexo=String.valueOf(jComboSexo.getSelectedItem());
+                    String pelo=jTextPelo.getText();
+                    
+                    LocalDate fecha=jDate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    
+                    int id=Integer.parseInt(jLabelNumero.getText());
               
-       Clientes cl= new Clientes();
-       MascotaData md=new MascotaData();
-       cl=(Clientes)jComboCliente.getSelectedItem();
-       Mascotas m=new Mascotas(id,alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
-       md.modificarMascota(m);
+                    Clientes cl= new Clientes();
+                    MascotaData md=new MascotaData();
+                    
+                    cl=(Clientes)jComboCliente.getSelectedItem();
+                    
+                    Mascotas m=new Mascotas(id,alias, sexo,tipo, raza, fecha, pelo, cl.getIdCliente(), true);
+                    
+                    md.modificarMascota(m);
 
-       }catch(NullPointerException d){
-       JOptionPane.showMessageDialog(null, "Faltan completar campos");
-       }catch(NumberFormatException f){
-       JOptionPane.showMessageDialog(null, "Verifique que cada campo este correcto");
-       }                                  
+                  }catch(NullPointerException d){
+                      
+                        JOptionPane.showMessageDialog(null, "Faltan completar campos");
+                        
+                  }catch(NumberFormatException f){
+                      
+                        JOptionPane.showMessageDialog(null, "Verifique que cada campo este correcto");
+                                                  }                                  
     }//GEN-LAST:event_jBmodActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-       try{
-          String alias=jTextAlias.getText();
-       Clientes cl= new Clientes();
-       MascotaData md=new MascotaData();
-       cl=(Clientes)jComboCliente.getSelectedItem();
-       Mascotas m=new Mascotas();
-       m.setAlias(alias);
-       m.setIdCliente(cl.getIdCliente());    
-      m= md.buscarMascota(m.getIdCliente(), m.getAlias());
-       String tipo=m.getEspecie();
-       String sex=m.getSexo();
-       String pelo=m.getPelaje();
-       String raza=m.getRaza();
+    
+        
+        try{
+                String alias=jTextAlias.getText();
+                
+                Clientes cl= new Clientes();
+                MascotaData md=new MascotaData();
+                Mascotas m=new Mascotas();
+                
+                cl=(Clientes)jComboCliente.getSelectedItem();
+                
+                
+                  m.setAlias(alias);
+                  m.setIdCliente(cl.getIdCliente());    
+                  m= md.buscarMascota(m.getIdCliente(), m.getAlias());
+                  
+                       String tipo=m.getEspecie();
+                       String sex=m.getSexo();
+                       String pelo=m.getPelaje();
+                       String raza=m.getRaza();
  
        switch(sex){
+           
            case "Hembra": jComboSexo.setSelectedIndex(0);
            break;
+           
            case "Macho": jComboSexo.setSelectedIndex(1);
            break;
+           
            default: jComboSexo.setSelectedIndex(-1);
-           break;       
-        }
+           break;    
+           
+                  }
       
-       switch(tipo){
-        case "Perro":  jComboTipo.setSelectedIndex(0);
+       switch(tipo) {
+           
+           case "Perro":  jComboTipo.setSelectedIndex(0);
            break;
+           
            case "Gato": jComboTipo.setSelectedIndex(1);
            break;
+           
            case "Loro": jComboTipo.setSelectedIndex(2);
            break;
-           case "Hamster": jComboTipo.setSelectedIndex(3);break;
+           
+           case "Hamster": jComboTipo.setSelectedIndex(3);
+           break;
+           
            default:jComboTipo.setSelectedIndex(-1);
            break;
-       }
+                   }
                    
-        jTextRaza.setText(raza);
-        jTextPelo.setText(pelo);
-        jDate.setDate(Date.valueOf(m.getFechaNac()));
-        jLabelNumero.setText(String.valueOf(m.getIdMascota()));
+                     jTextRaza.setText(raza);
+                     jTextPelo.setText(pelo);
+                     jDate.setDate(Date.valueOf(m.getFechaNac()));
+                     jLabelNumero.setText(String.valueOf(m.getIdMascota()));
     
-       }catch(NullPointerException a){
-           if(jTextAlias.getText().equalsIgnoreCase("") || jComboCliente.getSelectedIndex()==-1){
-       JOptionPane.showMessageDialog(this, "faltan completar los campos");}
-       }       
+           }catch(NullPointerException a){
+               
+                if(jTextAlias.getText().equalsIgnoreCase("") || jComboCliente.getSelectedIndex()==-1){
+                    
+                    JOptionPane.showMessageDialog(this, "faltan completar los campos");
+                                                                                                     }
+                                         }       
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
 
             int respuesta = JOptionPane.showOptionDialog(null, "¿Quieres eliminar a la mascota y todos sus tratamientos?", "ADVERTENCIA", 
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Sí", "No"}, "No");     
-         if (respuesta == JOptionPane.YES_OPTION) {  
-             int id=Integer.parseInt(jLabelNumero.getText());
+       
+            if (respuesta == JOptionPane.YES_OPTION) {  
+               int id=Integer.parseInt(jLabelNumero.getText());
   
-       MascotaData md=new MascotaData();
+               MascotaData md=new MascotaData();
              
-       md.eliminarMascota(id);
+               md.eliminarMascota(id);
             
-        } else if (respuesta == JOptionPane.NO_OPTION) {           
-        }  
+             } else if (respuesta == JOptionPane.NO_OPTION) {           
+                                                            }  
     }//GEN-LAST:event_jBeliminarActionPerformed
   
        class FondoPanel extends JPanel{

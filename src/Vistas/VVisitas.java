@@ -25,19 +25,20 @@ import vet.Entidades.VisitaMascotas;
  * @author Exon
  */
 public class VVisitas extends javax.swing.JInternalFrame {
-    /**
-     * Creates new form Visitas
-     */
-    Mascotas mas;
-    Tratamiento trat;
+        
     ArrayList<Tratamiento> listtrat;
     ArrayList<Mascotas>    listmas;
+    
+    Tratamiento trat;
     TratamientoData tratdat;
+    
+    Mascotas mas;
     MascotaData  masdat;
+    
     VisitaMascotas vm;
     VisitaData vd;
     
-FondoPanel fondo = new FondoPanel();
+    FondoPanel fondo = new FondoPanel();
        
     public VVisitas() {
         mas=new Mascotas();
@@ -49,7 +50,9 @@ FondoPanel fondo = new FondoPanel();
         
         listtrat=(ArrayList) tratdat.obtenerTratamientos();
         listmas=(ArrayList) masdat.listarMascotas();
+        
         this.setContentPane(fondo);
+        
         initComponents();
         cargarComboM();
         cargarComboT();
@@ -251,7 +254,7 @@ FondoPanel fondo = new FondoPanel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
+       
         this.dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
@@ -276,58 +279,73 @@ FondoPanel fondo = new FondoPanel();
     }
     
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        // TODO add your handling code here:
+      
         double precio_consulta=0;
+        
         if(jTextConsulta.getText().equalsIgnoreCase("")){
-        precio_consulta=0;
+           
+            precio_consulta=0;
         
         }else{ precio_consulta =Double.parseDouble(jTextConsulta.getText());}
 
-        trat=(Tratamiento)jComboT.getSelectedItem();
-         int respuesta = JOptionPane.showOptionDialog(null, "El importe a abonar es de: "+(precio_consulta+trat.getImporte()), "Visita Finalizada", 
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Pagar", "Cancelar"}, "Cancelar");
+              trat=(Tratamiento)jComboT.getSelectedItem();
+              int respuesta = JOptionPane.showOptionDialog(null, "El importe a abonar es de: "+(precio_consulta+trat.getImporte()), "Visita Finalizada", 
+              JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Pagar", "Cancelar"}, "Cancelar");
         
         if (respuesta == JOptionPane.YES_OPTION) {
         
               try{
-              mas=(Mascotas)jComboM.getSelectedItem();
-              trat=(Tratamiento) jComboT.getSelectedItem();
-              double peso=Double.parseDouble(jTextPeso.getText());
-              String des=jTextArea.getText();
-              boolean patologia=jRadioPato.isSelected();
-              LocalDate fechaVisita= LocalDate.now();
-              vm=new VisitaMascotas(mas.getIdMascota(), trat.getIdTrat(), fechaVisita, peso, true, patologia,des);     
-              vd.guardarVisita(vm);
-        }catch(NullPointerException b){
-            JOptionPane.showMessageDialog(null, "falta completar campos"); 
-        }
+                     mas=(Mascotas)jComboM.getSelectedItem();
+                     trat=(Tratamiento) jComboT.getSelectedItem();
+                     
+                     double peso=Double.parseDouble(jTextPeso.getText());
+                     String des=jTextArea.getText();
+                     boolean patologia=jRadioPato.isSelected();
+                     LocalDate fechaVisita= LocalDate.now();
+                     
+                     vm=new VisitaMascotas(mas.getIdMascota(), trat.getIdTrat(), fechaVisita, peso, true, patologia,des);     
+                     vd.guardarVisita(vm);
               
-        } else if (respuesta == JOptionPane.NO_OPTION) {           
-        }
+                 }catch(NullPointerException b){
+                     
+                      JOptionPane.showMessageDialog(null, "falta completar campos"); 
+                                                }
+              
+         } else if (respuesta == JOptionPane.NO_OPTION) {           
+                                                         }
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jComboTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jComboTActionPerformed
     
     private void cargarComboM(){
    
-         jComboM.removeAllItems();
-     listmas=(ArrayList) masdat.listarMascotas();
-    for(Mascotas m:listmas){
-    jComboM.addItem(m);    
-    }
-        jComboM.setSelectedIndex(-1);  
+            jComboM.removeAllItems();
+            
+            listmas=(ArrayList) masdat.listarMascotas();
+     
+            for(Mascotas m:listmas){
+                
+                jComboM.addItem(m);    
+                                    }
+            
+                jComboM.setSelectedIndex(-1);  
     }
    
      private void cargarComboT(){
    
-         jComboT.removeAllItems();
-     listtrat=(ArrayList) tratdat.obtenerTratamientos();
-    for(Tratamiento t:listtrat){
-    jComboT.addItem(t);   
-    }
-        jComboT.setSelectedIndex(-1);  
+              jComboT.removeAllItems();
+              
+               listtrat=(ArrayList) tratdat.obtenerTratamientos();
+     
+                for(Tratamiento t:listtrat){
+        
+                 jComboT.addItem(t);   
+    
+                                           }
+                
+                jComboT.setSelectedIndex(-1);  
     }
       
          class FondoPanel extends JPanel{

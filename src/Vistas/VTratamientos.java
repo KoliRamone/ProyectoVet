@@ -20,19 +20,22 @@ import vet.Entidades.Tratamiento;
  * @author Exon
  */
 public class VTratamientos extends javax.swing.JInternalFrame {
-FondoPanel fondo = new FondoPanel();
+         
+    FondoPanel fondo = new FondoPanel();
+    
     Tratamiento trat;
     TratamientoData tratdat;
+    
     ArrayList<Tratamiento> listtrata=new ArrayList<>();
     
     public VTratamientos() {
+        
         this.setContentPane(fondo);
         initComponents();
+     
         trat=new Tratamiento();
         tratdat=new TratamientoData();
-        
-        
-        
+             
         cargarCombo();
         
     }
@@ -262,7 +265,7 @@ FondoPanel fondo = new FondoPanel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
+        
         this.dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
@@ -274,39 +277,44 @@ FondoPanel fondo = new FondoPanel();
        
         int id=Integer.parseInt(jLabelID.getText());
         boolean est=jRadio.isSelected();
+        double imp=Double.parseDouble(jTextImporte.getText());
+        
         String des=jTextDes.getText();
         String tipo=jTextTipo.getText();
-        double imp=Double.parseDouble(jTextImporte.getText());
+        
         
         Tratamiento trat1=new Tratamiento(id,des,tipo,est, imp);
         
         tratdat.modificarTratamiento(trat1);
         
-         cargarCombo();
+        cargarCombo();
         
     }//GEN-LAST:event_jBmodActionPerformed
 
     private void jTextTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTipoActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_jTextTipoActionPerformed
 
     private void jTextImporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextImporteKeyTyped
-        // TODO add your handling code here:
-          if(Character.isLetter(evt.getKeyChar())){
-        evt.consume();
-        }
-        if(evt.getKeyChar()==KeyEvent.VK_SPACE){
-        evt.consume();
-              
+        
+            if(Character.isLetter(evt.getKeyChar())){
+            evt.consume();
+                                                    }
+            if(evt.getKeyChar()==KeyEvent.VK_SPACE){
+            evt.consume();
+                                                   }
     }//GEN-LAST:event_jTextImporteKeyTyped
-    }   
+       
     
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        // TODO add your handling code here:
+        
         String tipo=jTextTipo.getText();
         String descripcion=jTextDes.getText();
+        
         double importe=Double.parseDouble(jTextImporte.getText());
+        
         trat=new Tratamiento(descripcion,tipo, true,importe);
+        
         tratdat.guardarTratamiento(trat);
         
         listtrata=(ArrayList) tratdat.obtenerTratamientos();
@@ -316,7 +324,7 @@ FondoPanel fondo = new FondoPanel();
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboActionPerformed
-        // TODO add your handling code here:
+     
         
       
         
@@ -327,27 +335,30 @@ FondoPanel fondo = new FondoPanel();
     }//GEN-LAST:event_jComboActionPerformed
 
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
-        // TODO add your handling code here:
         
-          trat=(Tratamiento)jCombo.getSelectedItem();
-        System.out.println(trat.getIdTrat());
-       Tratamiento tra= tratdat.buscarTratamiento(trat.getIdTrat());
         
-        jTextTipo.setText(tra.getTipoTrat());
-        jTextDes.setText(tra.getDescripcion());
-        jTextImporte.setText(String.valueOf(tra.getImporte()));
-        jLabelID.setText(String.valueOf(tra.getIdTrat()));
-        System.out.println(tra.isEstado());
-        if(tra.isEstado()==true){
-        jRadio.setSelected(true);
+            trat=(Tratamiento)jCombo.getSelectedItem();
+            
+            Tratamiento tra= tratdat.buscarTratamiento(trat.getIdTrat());
         
-        }else{jRadio.setSelected(false);}
+            jTextTipo.setText(tra.getTipoTrat());
+            jTextDes.setText(tra.getDescripcion());
+            jTextImporte.setText(String.valueOf(tra.getImporte()));
+            jLabelID.setText(String.valueOf(tra.getIdTrat()));
+            
+            
+            
+             if(tra.isEstado()==true){
+                jRadio.setSelected(true);
+        
+             }else{jRadio.setSelected(false);
+                                              }
         
         
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-        // TODO add your handling code here:
+       
         jCombo.setSelectedIndex(-1);
         jTextTipo.setText("");
         jTextDes.setText("");
@@ -360,42 +371,40 @@ FondoPanel fondo = new FondoPanel();
     }//GEN-LAST:event_jBnuevoActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-        // TODO add your handling code here:
+       
         
         
         
            int respuesta = JOptionPane.showOptionDialog(null, "¿Quieres eliminar el tratamiento?"+"\n"+" el tratamiento quedara almacenado en la base de datos "+"\n"+" no podra cargarse en la aplicacion", "ADVERTENCIA", 
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Sí", "No"}, "No");
         
-        if (respuesta == JOptionPane.YES_OPTION) {
+               if (respuesta == JOptionPane.YES_OPTION) {
             
-            int id=Integer.parseInt(jLabelID.getText());
+                   int id=Integer.parseInt(jLabelID.getText());
                        
-             tratdat.eliminarTratamiento(id);
-             cargarCombo();
+                    tratdat.eliminarTratamiento(id);
+                    cargarCombo();
             
-        } else if (respuesta == JOptionPane.NO_OPTION) {
+                 } else if (respuesta == JOptionPane.NO_OPTION) {
             
-        }
+                                                                }
         
-        
-        
-        
-        
-        
-        
+         
         
     }//GEN-LAST:event_jBeliminarActionPerformed
 
      private void cargarCombo(){
    
-         jCombo.removeAllItems();
-    listtrata=(ArrayList) tratdat.obtenerTratamientos();
-    for(Tratamiento t:listtrata){
-    jCombo.addItem(t);
+               jCombo.removeAllItems();
+               
+              listtrata=(ArrayList) tratdat.obtenerTratamientos();
+              
+                for(Tratamiento t:listtrata){
+                   jCombo.addItem(t);
     
-    }
-        jCombo.setSelectedIndex(-1);
+                                            }
+                
+                      jCombo.setSelectedIndex(-1);
        
     
     }

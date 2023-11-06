@@ -6,9 +6,7 @@
 package Veterinaria;
 
 
-import java.util.ArrayList;
-import vet.Acceso.*;
-import vet.Entidades.*;
+
 
 
 public class Veterinaria {
@@ -17,23 +15,6 @@ public class Veterinaria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        //Clientes juan= new Clientes(5,786345724,"Perez","juancito","Av.Cabildo 1800","Mrwhth",1155443322,1155667788,true);
-        //ClienteData cd = new ClienteData();
-        //cd.guardarCliente(juan);
-        //cd.modificarCliente(juan);
-        //Clientes Marta = cd.buscarClientePorDni(786345724);
-        //Clientes Marta = cd.buscarCliente(2);
-        //cd.eliminarCliente(5);
-        //System.out.println(Marta);
-        
-        //for (Clientes cliente:cd.listarClientes()){
-        //System.out.println(cliente);
-        //}    
-        
-     //  VisitaData vd=new VisitaData();
-      // ArrayList<VisitaMascotas> avm=new ArrayList<>();
-     // avm=(ArrayList)vd.listarVisitasPorMascotas(4);
-     //  System.out.println(avm);
+       
     }   
 }
